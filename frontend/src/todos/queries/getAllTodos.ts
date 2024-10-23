@@ -1,3 +1,5 @@
+import { Todo } from "..";
+
 export const getAllTodos = (): Todo[] => {
 	const todosJson = localStorage.getItem("todos");
 	if (!todosJson) {
@@ -10,10 +12,3 @@ export const getAllTodos = (): Todo[] => {
 		return [];
 	}
 };
-
-interface Todo {
-	id: string;
-	title: string;
-	description: string;
-	completed: boolean;
-}

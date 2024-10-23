@@ -1,5 +1,8 @@
 import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
+
 import {
   Button,
   Card,
@@ -8,6 +11,13 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
   Form,
   FormControl,
   FormDescription,
@@ -18,17 +28,33 @@ import {
   Input,
   Textarea,
 } from "@/components/ui";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { createTodo } from "@/todos/mutations";
-import { getAllTodos } from "@/todos/queries/getAllTodos";
+
+import { columns, createTodo, getAllTodos, Todo } from "@/todos";
+import { DataTable } from "@/todos/components/data-table";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function Home() {
-  const allTodos = getAllTodos();
+  const [todos, setTodos] = useState<Todo[]>([]);
+
+  useEffect(() => {
+    const allTodos = getAllTodos();
+    setTodos(allTodos);
+  }, []);
 
   const formSchema = z.object({
     title: z.string().min(2).max(50),
     description: z.string().min(2).max(100),
+    importance: z.string().optional(),
   });
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -36,12 +62,16 @@ export default function Home() {
       description: "",
     },
   });
+
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // call todos save mutation
-    console.log(values);
-    createTodo(
-      { ...values },
-    );
+    try {
+      createTodo(
+        { ...values },
+      );
+      console.log("Todo created successfully");
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   return (
@@ -52,14 +82,9 @@ export default function Home() {
       <h1 className="text-center scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
         Here's all your todos:
       </h1>
-      <ul>
-        {allTodos.map((todo) => (
-          <li key={todo.id}>
-            {todo.title} - {todo.description}
-          </li>
-        ))}
-      </ul>
-
+      <div className="mt-20 mx-auto w-[550px]">
+        <DataTable columns={columns} data={todos} />
+      </div>
       <Card className="w-[350px] mt-10 mx-auto">
         <CardHeader>
           <CardTitle>Create a new Todo</CardTitle>
@@ -95,6 +120,34 @@ export default function Home() {
                     </FormControl>
                     <FormDescription>
                       This is your public display name.
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="importance"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Importance</FormLabel>
+                    <FormControl>
+                      <Select {...field}>
+                        <SelectTrigger className="w-[180px]">
+                          <SelectValue placeholder="Select an importance" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectGroup>
+                            <SelectLabel>Importance</SelectLabel>
+                            <SelectItem value="low">Low</SelectItem>
+                            <SelectItem value="medium">Medium</SelectItem>
+                            <SelectItem value="high">High</SelectItem>
+                          </SelectGroup>
+                        </SelectContent>
+                      </Select>
+                    </FormControl>
+                    <FormDescription>
+                      How important is this task?
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
