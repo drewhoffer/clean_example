@@ -1,21 +1,15 @@
+import { z } from "zod";
 import { makeTodo } from "../todo";
-
-export interface CreateTodo {
-	title: string;
-	description: string;
-	completed?: boolean;
-	importance?: string;
-}
+import { CreateTodo } from "../validations";
 
 export const createTodo = (newTodo: CreateTodo) => {
 	try {
 		const todos = JSON.parse(localStorage.getItem("todos") || "[]");
 
 		const createdTodo = makeTodo({
-			title: newTodo.title,
-			description: newTodo.description,
-			completed: newTodo.completed || false,
+			...newTodo,
 		});
+		console.log(createdTodo);
 		todos.push(createdTodo);
 		localStorage.setItem("todos", JSON.stringify(todos));
 		return createdTodo;
