@@ -10,6 +10,10 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
+	DialogContent,
+	DialogDescription,
+	DialogHeader,
+	DialogTitle,
 	Form,
 	FormControl,
 	FormDescription,
@@ -29,7 +33,7 @@ import {
 } from "./ui";
 import { createTodoSchema } from "@/todos/validations";
 
-export const CreateTodo = () => {
+export const CreateTodoDialog = () => {
 	const form = useForm<z.infer<typeof createTodoSchema>>({
 		resolver: zodResolver(createTodoSchema),
 		defaultValues: {
@@ -48,11 +52,13 @@ export const CreateTodo = () => {
 		}
 	}
 	return (
-		<Card className="w-[350px] mt-10 mx-auto">
-			<CardHeader>
-				<CardTitle>Create a new Todo</CardTitle>
-				<CardDescription>Give a name and description</CardDescription>
-			</CardHeader>
+		<DialogContent>
+			<DialogHeader>
+				<DialogTitle>Create a new Todo</DialogTitle>
+				<DialogDescription>
+					Give a name and description
+				</DialogDescription>
+			</DialogHeader>
 			<Form {...form}>
 				<form onSubmit={form.handleSubmit(onSubmit)}>
 					<CardContent>
@@ -223,7 +229,7 @@ export const CreateTodo = () => {
 					</CardFooter>
 				</form>
 			</Form>
-		</Card>
+		</DialogContent>
 	);
 };
-export default CreateTodo;
+export default CreateTodoDialog;
