@@ -1,15 +1,9 @@
-import { createTodo } from "@/todos";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import {
 	Button,
-	Card,
 	CardContent,
-	CardDescription,
 	CardFooter,
-	CardHeader,
-	CardTitle,
 	DialogContent,
 	DialogDescription,
 	DialogHeader,
@@ -30,11 +24,13 @@ import {
 	SelectTrigger,
 	SelectValue,
 	Textarea,
-} from "./ui";
-import { createTodoSchema } from "@/todos/validations";
+} from "@/components/ui";
+import { CreateTodo, createTodoSchema } from "../validations";
+import { createTodo } from "../mutations";
+import { useRouter } from "next/router";
 
 export const CreateTodoDialog = () => {
-	const form = useForm<z.infer<typeof createTodoSchema>>({
+	const form = useForm<CreateTodo>({
 		resolver: zodResolver(createTodoSchema),
 		defaultValues: {
 			title: "",
@@ -43,10 +39,12 @@ export const CreateTodoDialog = () => {
 		},
 	});
 
-	function onSubmit(values: z.infer<typeof createTodoSchema>) {
+	const { push } = useRouter();
+
+	function onSubmit(values: CreateTodo) {
 		try {
 			createTodo({ ...values });
-			console.log("Todo created successfully");
+			push("/");
 		} catch (e) {
 			console.error(e);
 		}

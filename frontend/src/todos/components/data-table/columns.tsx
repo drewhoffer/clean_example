@@ -2,10 +2,10 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 
-import { labels, priorities, statuses } from "../todo";
+import { labels, priorities, statuses } from "../../todo";
 import { DataTableColumnHeader } from "./data-table-column-header";
 import { DataTableRowActions } from "./data-table-row-actions";
-import { Todo } from "../todo";
+import { Todo } from "../../todo";
 import { Badge, Checkbox } from "@/components/ui";
 
 export const columns: ColumnDef<Todo>[] = [

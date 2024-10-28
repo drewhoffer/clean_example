@@ -1,7 +1,7 @@
 import { DotsHorizontalIcon } from "@radix-ui/react-icons";
 import { Row } from "@tanstack/react-table";
 
-import { labels, todoSchema } from "../todo";
+import { labels, todoSchema } from "../../todo";
 import {
 	Button,
 	DropdownMenu,

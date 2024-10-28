@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
 import { columns, getAllTodos, Todo } from "@/todos";
-import { DataTable } from "@/todos/components/data-table";
+import { DataTable } from "@/todos/components/data-table/data-table";
 
-import { UserNav } from "@/components/user-nav";
+import { UserNav } from "@/core/components/user-nav";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui";
-import { AppSidebar } from "@/components/app-sidebar";
+import { AppSidebar } from "@/core/components/app-sidebar";
 
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([]);

@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { todoSchema } from "../todo";
 
 export const createTodoSchema = z.object({
 	title: z.string().min(1).max(100),

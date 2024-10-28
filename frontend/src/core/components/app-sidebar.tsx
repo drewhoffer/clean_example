@@ -8,27 +8,18 @@ import {
 } from "lucide-react";
 
 import {
-	Button,
 	Dialog,
-	DialogContent,
-	DialogDescription,
-	DialogFooter,
-	DialogHeader,
-	DialogTitle,
 	DialogTrigger,
-	Input,
-	Label,
 	Sidebar,
 	SidebarContent,
 	SidebarGroup,
 	SidebarGroupContent,
 	SidebarGroupLabel,
 	SidebarMenu,
-	SidebarMenuAction,
 	SidebarMenuButton,
 	SidebarMenuItem,
-} from "@/components/ui";
-import CreateTodo, { CreateTodoDialog } from "./create-todo-dialog";
+} from "../../components/ui";
+import { CreateTodoDialog } from "@/todos";
 
 // Menu items.
 const items = [

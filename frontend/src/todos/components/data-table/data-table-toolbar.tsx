@@ -1,7 +1,7 @@
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { Table } from "@tanstack/react-table";
 
-import { priorities, statuses } from "../todo";
+import { priorities, statuses } from "../../todo";
 
 import { Button, Input } from "@/components/ui";
 import { DataTableViewOptions } from "./data-table-view-options";
