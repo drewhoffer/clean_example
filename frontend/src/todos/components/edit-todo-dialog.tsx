@@ -57,9 +57,10 @@ export const EditTodoDialog = ({ todo }: EditTodoDialogProps) => {
 	return (
 		<DialogContent>
 			<DialogHeader>
-				<DialogTitle>Create a new Todo</DialogTitle>
+				<DialogTitle>Update yourTodo</DialogTitle>
 				<DialogDescription>
-					Give a name and description
+					Go ahead and do whatever... or don&apos;t. I&apos;m not your
+					boss.
 				</DialogDescription>
 			</DialogHeader>
 			<Form {...form}>
@@ -73,6 +74,7 @@ export const EditTodoDialog = ({ todo }: EditTodoDialogProps) => {
 									<FormLabel>Username</FormLabel>
 									<FormControl>
 										<Input
+											autoFocus
 											placeholder="shadcn"
 											{...field}
 										/>
