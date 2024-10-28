@@ -14,6 +14,7 @@ export default function Home() {
     const allTodos = getAllTodos();
     setTodos(allTodos);
   }, []);
+
   return (
     <SidebarProvider>
       <AppSidebar />

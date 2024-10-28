@@ -6,6 +6,7 @@ import { priorities, statuses } from "../../todo";
 import { Button, Input } from "@/components/ui";
 import { DataTableViewOptions } from "./data-table-view-options";
 import { DataTableFacetedFilter } from "./data-table-faceted-filter";
+import DataTableCreateButton from "./data-table-create-button";
 
 interface DataTableToolbarProps<TData> {
 	table: Table<TData>;
@@ -54,7 +55,10 @@ export function DataTableToolbar<TData>({
 					</Button>
 				)}
 			</div>
-			<DataTableViewOptions table={table} />
+			<div className="flex items-center gap-1">
+				<DataTableViewOptions table={table} />
+				<DataTableCreateButton />
+			</div>
 		</div>
 	);
 }

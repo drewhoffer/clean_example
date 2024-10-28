@@ -25,25 +25,28 @@ import {
 	SelectValue,
 	Textarea,
 } from "@/components/ui";
-import { CreateTodo, createTodoSchema } from "../validations";
-import { createTodo } from "../mutations";
+import { EditTodo, editTodoSchema } from "../validations";
+import { editTodo } from "../mutations";
 import { useRouter } from "next/router";
+import { Todo } from "../todo";
 
-export const CreateTodoDialog = () => {
-	const form = useForm<CreateTodo>({
-		resolver: zodResolver(createTodoSchema),
+export interface EditTodoDialogProps {
+	todo: Todo;
+}
+
+export const EditTodoDialog = ({ todo }: EditTodoDialogProps) => {
+	const form = useForm<EditTodo>({
+		resolver: zodResolver(editTodoSchema),
 		defaultValues: {
-			title: "",
-			description: "",
-			label: "",
+			...todo,
 		},
 	});
 
 	const { push, reload } = useRouter();
 
-	async function onSubmit(values: CreateTodo) {
+	async function onSubmit(values: EditTodo) {
 		try {
-			createTodo({ ...values });
+			editTodo({ ...values });
 
 			await push("/", { query: { success: "true" } });
 			reload();
@@ -225,11 +228,11 @@ export const CreateTodoDialog = () => {
 						/>
 					</CardContent>
 					<CardFooter>
-						<Button type="submit">Create</Button>
+						<Button type="submit">Update</Button>
 					</CardFooter>
 				</form>
 			</Form>
 		</DialogContent>
 	);
 };
-export default CreateTodoDialog;
+export default EditTodoDialog;
