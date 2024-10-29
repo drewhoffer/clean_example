@@ -1,22 +1,29 @@
 import { Application } from "jsr:@oak/oak/application";
-import { Router } from "jsr:@oak/oak/router";
+import DinoRouter from "./routes/dino-routes.ts";
+import TodoRouter from "./routes/todo-routes.ts";
 
 export const createServer = () => {
-	const router = new Router();
-	router.get("/", (ctx) => {
-		ctx.response.body = `<!DOCTYPE html>
-      <html>
-        <head><title>Hello oak!</title><head>
-        <body>
-          <h1>Hello oak!</h1>
-        </body>
-      </html>
-    `;
+	const app = new Application();
+
+	// Logger
+	app.use(async (ctx, next) => {
+		await next();
+		const rt = ctx.response.headers.get("X-Response-Time");
+		console.log(`${ctx.request.method} ${ctx.request.url} - ${rt}`);
 	});
 
-	const app = new Application();
-	app.use(router.routes());
-	app.use(router.allowedMethods());
+	// Timing
+	app.use(async (ctx, next) => {
+		const start = Date.now();
+		await next();
+		const ms = Date.now() - start;
+		ctx.response.headers.set("X-Response-Time", `${ms}ms`);
+	});
+
+	app.use(DinoRouter.routes());
+	app.use(DinoRouter.allowedMethods());
+	app.use(TodoRouter.routes());
+	app.use(TodoRouter.allowedMethods());
 	return app;
 };
 
