@@ -1,25 +1,24 @@
 import type { Response } from "@oak/oak/response";
-import { Todos } from "../models/todos.ts";
 import type { Request } from "@oak/oak/request";
-import { makeTodo, type Todo } from "../types/todo.ts";
+import { makeTodo } from "../models/todos.ts";
 import type { RouterContext } from "@oak/oak/router";
+import { todosDB } from "../data-access/index.ts";
 
 interface GetTodosParams {
 	response: Response;
 }
 export const getTodos = ({ response }: GetTodosParams) => {
+	const todos = todosDB.findAll();
 	return response.body = {
 		success: true,
-		data: Todos,
+		todos: todos,
 	};
 };
 
 type GetTodoParams = RouterContext<"/api/v1/todos/:id">;
-
 export const getTodo = (ctx: GetTodoParams) => {
 	const { response } = ctx;
 	const { id } = ctx.params;
-	console.log(id);
 	if (!id) {
 		response.status = 400;
 		response.body = {
@@ -29,13 +28,12 @@ export const getTodo = (ctx: GetTodoParams) => {
 		return response;
 	}
 
-	const selectedTodo: Todo | undefined = Todos.find((todo) => todo.id === id);
-
+	const selectedTodo = todosDB.findById(id);
 	if (selectedTodo) {
 		response.status = 200;
 		response.body = {
 			success: true,
-			data: selectedTodo,
+			todo: selectedTodo,
 		};
 	} else {
 		response.status = 404;
@@ -51,28 +49,28 @@ interface CreateTodoParams {
 	request: Request;
 	response: Response;
 }
-
 export const createTodo = async (
 	{ request, response }: CreateTodoParams,
 ) => {
-	if (!request.hasBody) {
-		response.status = 400;
-		response.body = {
-			success: false,
-			msg: "No data",
-		};
-	} else {
+	try {
 		const { todo } = await request.body.json();
 		const newTodo = makeTodo({
 			...todo,
 			id: crypto.randomUUID(),
 		});
 
-		Todos.push(newTodo);
+		const insertedTodo = todosDB.insert(newTodo);
+		// Todos.push(newTodo);
 		response.status = 201;
 		response.body = {
 			success: true,
-			data: todo,
+			todo: insertedTodo,
+		};
+	} catch (error) {
+		response.status = 400;
+		response.body = {
+			success: false,
+			msg: error?.toString(),
 		};
 	}
 };
@@ -92,25 +90,23 @@ export const deleteTodo = (
 		};
 		return response;
 	}
-	const filteredTodos: Array<Todo> = Todos.filter(
-		(todo: Todo) => (todo.id !== id),
-	);
 
-	if (filteredTodos.length === Todos.length) {
+	const requestedTodo = todosDB.findById(id);
+	if (!requestedTodo) {
 		response.status = 404;
 		response.body = {
 			success: false,
-			msg: "Not found",
+			msg: "Not Found",
 		};
-	} else {
-		Todos.splice(0, Todos.length);
-		Todos.push(...filteredTodos);
-		response.status = 200;
-		response.body = {
-			success: true,
-			msg: `Todo with id ${id} has been deleted`,
-		};
+		return response;
 	}
+
+	const deletedTodo = todosDB.remove(requestedTodo.id);
+	response.status = 200;
+	response.body = {
+		success: true,
+		todo: deletedTodo,
+	};
 };
 
 type UpdateTodoParams = RouterContext<"/api/v1/todos/:id">;
@@ -128,43 +124,28 @@ export const updateTodo = async (
 		};
 		return response;
 	}
-	const requestedTodo: Todo | undefined = Todos.find(
-		(todo: Todo) => todo.id === id,
-	);
-	if (requestedTodo) {
-		const { todo } = await request.body.json();
-		const updatedTodo = makeTodo({
-			...todo,
-			id: id!,
-		});
-
-		const updatedTodos: Array<Todo> = Todos.map(
-			(todo: Todo) => {
-				if (todo.id === id) {
-					return {
-						...todo,
-						...updatedTodo,
-					};
-				} else {
-					return todo;
-				}
-			},
-		);
-
-		Todos.splice(0, Todos.length);
-		Todos.push(...updatedTodos);
-		response.status = 200;
-		response.body = {
-			success: true,
-			msg: `Todo with id ${id} updated`,
-		};
-	} else {
+	const requestedTodo = todosDB.findById(id);
+	if (!requestedTodo) {
 		response.status = 404;
 		response.body = {
 			success: false,
 			msg: `Not Found`,
 		};
+		return;
 	}
+	const { todo } = await request.body.json();
+	const updatedTodo = makeTodo({
+		...requestedTodo,
+		...todo,
+		id: requestedTodo.id,
+	});
+	const insertedTodo = todosDB.update(updatedTodo);
+
+	response.status = 200;
+	response.body = {
+		success: true,
+		todo: insertedTodo,
+	};
 };
 
 export default {

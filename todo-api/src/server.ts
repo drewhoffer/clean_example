@@ -1,5 +1,4 @@
 import { Application } from "jsr:@oak/oak/application";
-import DinoRouter from "./routes/dino-routes.ts";
 import TodoRouter from "./routes/todo-routes.ts";
 
 export const createServer = () => {
@@ -20,8 +19,6 @@ export const createServer = () => {
 		ctx.response.headers.set("X-Response-Time", `${ms}ms`);
 	});
 
-	app.use(DinoRouter.routes());
-	app.use(DinoRouter.allowedMethods());
 	app.use(TodoRouter.routes());
 	app.use(TodoRouter.allowedMethods());
 	return app;
