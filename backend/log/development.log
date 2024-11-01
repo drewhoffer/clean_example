@@ -1,0 +1,449 @@
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:01:07 -0400
+  [1m[35m (8.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate
+
+You have 1 pending migration:
+
+db/migrate/20241101010004_create_todos.rb
+
+
+):
+  
+activerecord (7.2.2) lib/active_record/migration.rb:756:in `check_pending_migrations'
+activerecord (7.2.2) lib/active_record/migration.rb:663:in `block (2 levels) in call'
+activesupport (7.2.2) lib/active_support/file_update_checker.rb:85:in `execute'
+activerecord (7.2.2) lib/active_record/migration.rb:668:in `block in call'
+activerecord (7.2.2) lib/active_record/migration.rb:660:in `synchronize'
+activerecord (7.2.2) lib/active_record/migration.rb:660:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'
+activesupport (7.2.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.2.2) lib/action_dispatch/middleware/callbacks.rb:30:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (7.2.2) lib/rails/rack/logger.rb:41:in `call_app'
+railties (7.2.2) lib/rails/rack/logger.rb:29:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/remote_ip.rb:96:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/request_id.rb:33:in `call'
+rack (3.1.8) lib/rack/runtime.rb:24:in `call'
+activesupport (7.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.2.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.2.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.1.8) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+railties (7.2.2) lib/rails/engine.rb:535:in `call'
+puma (6.4.3) lib/puma/configuration.rb:272:in `call'
+puma (6.4.3) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.3) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.3) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.3) lib/puma/server.rb:464:in `process_client'
+puma (6.4.3) lib/puma/server.rb:245:in `block in run'
+puma (6.4.3) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+Started GET "/" for ::1 at 2024-10-31 21:01:16 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate
+
+You have 1 pending migration:
+
+db/migrate/20241101010004_create_todos.rb
+
+
+):
+  
+activerecord (7.2.2) lib/active_record/migration.rb:756:in `check_pending_migrations'
+activerecord (7.2.2) lib/active_record/migration.rb:663:in `block (2 levels) in call'
+activesupport (7.2.2) lib/active_support/file_update_checker.rb:85:in `execute'
+activerecord (7.2.2) lib/active_record/migration.rb:668:in `block in call'
+activerecord (7.2.2) lib/active_record/migration.rb:660:in `synchronize'
+activerecord (7.2.2) lib/active_record/migration.rb:660:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'
+activesupport (7.2.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.2.2) lib/action_dispatch/middleware/callbacks.rb:30:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (7.2.2) lib/rails/rack/logger.rb:41:in `call_app'
+railties (7.2.2) lib/rails/rack/logger.rb:29:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/remote_ip.rb:96:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/request_id.rb:33:in `call'
+rack (3.1.8) lib/rack/runtime.rb:24:in `call'
+activesupport (7.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.2.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.2.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.1.8) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+railties (7.2.2) lib/rails/engine.rb:535:in `call'
+puma (6.4.3) lib/puma/configuration.rb:272:in `call'
+puma (6.4.3) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.3) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.3) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.3) lib/puma/server.rb:464:in `process_client'
+puma (6.4.3) lib/puma/server.rb:245:in `block in run'
+puma (6.4.3) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+Started GET "/favicon.ico" for ::1 at 2024-10-31 21:01:17 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate
+
+You have 1 pending migration:
+
+db/migrate/20241101010004_create_todos.rb
+
+
+):
+  
+activerecord (7.2.2) lib/active_record/migration.rb:756:in `check_pending_migrations'
+activerecord (7.2.2) lib/active_record/migration.rb:663:in `block (2 levels) in call'
+activesupport (7.2.2) lib/active_support/file_update_checker.rb:85:in `execute'
+activerecord (7.2.2) lib/active_record/migration.rb:668:in `block in call'
+activerecord (7.2.2) lib/active_record/migration.rb:660:in `synchronize'
+activerecord (7.2.2) lib/active_record/migration.rb:660:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'
+activesupport (7.2.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.2.2) lib/action_dispatch/middleware/callbacks.rb:30:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (7.2.2) lib/rails/rack/logger.rb:41:in `call_app'
+railties (7.2.2) lib/rails/rack/logger.rb:29:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/remote_ip.rb:96:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/request_id.rb:33:in `call'
+rack (3.1.8) lib/rack/runtime.rb:24:in `call'
+activesupport (7.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.2.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.2.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.1.8) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+railties (7.2.2) lib/rails/engine.rb:535:in `call'
+puma (6.4.3) lib/puma/configuration.rb:272:in `call'
+puma (6.4.3) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.3) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.3) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.3) lib/puma/server.rb:464:in `process_client'
+puma (6.4.3) lib/puma/server.rb:245:in `block in run'
+puma (6.4.3) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+Started POST "/rails/actions" for ::1 at 2024-10-31 21:01:18 -0400
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (6.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-11-01 01:01:18.439461', '2024-11-01 01:01:18.439464') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTodos (20241101010004)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "todos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "label" varchar, "priority" varchar, "status" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241101010004') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2024-10-31 21:01:18 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/fresh/.asdf/installs/ruby/3.3.4/lib/ruby/gems/3.3.0/gems/railties-7.2.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/fresh/.asdf/installs/ruby/3.3.4/lib/ruby/gems/3.3.0/gems/railties-7.2.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.7ms | GC: 0.0ms)
+Completed 200 OK in 6ms (Views: 1.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/icon.png" for ::1 at 2024-10-31 21:01:18 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/icon.png"):
+  
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:01:21 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/todos"):
+  
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:01:52 -0400
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:04:05 -0400
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:04:18 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:05:29 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/todos"):
+  
+Started GET "/api/todos" for ::1 at 2024-10-31 21:05:34 -0400
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/api/todos" for ::1 at 2024-10-31 21:07:41 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/api/todos"):
+  
+Started GET "/todos" for ::1 at 2024-10-31 21:07:45 -0400
+Processing by TodosController#index as */*
+  [1m[36mTodo Load (1.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/todos_controller.rb:9:in `index'
+Completed 200 OK in 22ms (Views: 1.2ms | ActiveRecord: 1.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/todos" for ::1 at 2024-10-31 21:10:18 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/api/todos"):
+  
+Started GET "/favicon.ico" for ::1 at 2024-10-31 21:10:18 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:10:37 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:12:01 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:12:02 -0400
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:12:03 -0400
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:12:03 -0400
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:12:47 -0400
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:12:48 -0400
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:12:53 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:12:53 -0400
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:12:54 -0400
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:12:54 -0400
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:12:54 -0400
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:12:54 -0400
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:12:54 -0400
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:13:45 -0400
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:16:08 -0400
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:16:09 -0400
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:16:09 -0400
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/" for ::1 at 2024-10-31 21:16:18 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/fresh/.asdf/installs/ruby/3.3.4/lib/ruby/gems/3.3.0/gems/railties-7.2.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/fresh/.asdf/installs/ruby/3.3.4/lib/ruby/gems/3.3.0/gems/railties-7.2.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.7ms | GC: 0.0ms)
+Completed 200 OK in 6ms (Views: 2.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:16:22 -0400
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:16:54 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:16:55 -0400
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:17:49 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:17:50 -0400
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:17:50 -0400
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/api/v1/todos" for ::1 at 2024-10-31 21:18:46 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.8ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 15ms (Views: 1.4ms | ActiveRecord: 0.9ms (1 query, 0 cached) | GC: 0.8ms)
+
+
