@@ -1,14 +1,14 @@
+import { http } from "@/lib";
 import { Todo } from "..";
 
-export const getAllTodos = (): Todo[] => {
-	const todosJson = localStorage.getItem("todos");
-	if (!todosJson) {
-		return [];
-	}
+export const getAllTodos = async (): Promise<Todo[]> => {
+	console.log("called");
 	try {
-		return JSON.parse(todosJson) as Todo[];
-	} catch (error) {
-		console.error("Error parsing todos from localStorage", error);
-		return [];
+		const res = await http.get<Todo[]>("/todos");
+		console.log(res);
+		return res;
+	} catch (e) {
+		console.log(e);
+		throw e;
 	}
 };

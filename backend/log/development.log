@@ -447,3 +447,810 @@ Processing by Api::V1::TodosController#index as HTML
 Completed 200 OK in 15ms (Views: 1.4ms | ActiveRecord: 0.9ms (1 query, 0 cached) | GC: 0.8ms)
 
 
+Started GET "/_next/webpack-hmr" for ::1 at 2024-11-01 18:57:08 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/_next/webpack-hmr"):
+  
+Started GET "/_next/webpack-hmr" for ::1 at 2024-11-01 18:57:13 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/_next/webpack-hmr"):
+  
+Started GET "/" for ::1 at 2024-11-01 18:57:17 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/fresh/.asdf/installs/ruby/3.3.4/lib/ruby/gems/3.3.0/gems/railties-7.2.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/fresh/.asdf/installs/ruby/3.3.4/lib/ruby/gems/3.3.0/gems/railties-7.2.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.5ms | GC: 0.0ms)
+Completed 200 OK in 5ms (Views: 1.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/icon.png" for ::1 at 2024-11-01 18:57:17 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/icon.png"):
+  
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 18:57:26 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (1.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 18ms (Views: 1.4ms | ActiveRecord: 1.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/favicon.ico" for ::1 at 2024-11-01 18:57:26 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 18:59:34 -0400
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 19:01:40 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My new todo", "description"=>"This is my description", "label"=>"bugfix", "todo"=>{"title"=>"My new todo", "description"=>"This is my description", "label"=>"bugfix"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:22:in `create'
+  [1m[36mTodo Create (2.6ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "label", "priority", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "My new todo"], ["description", "This is my description"], ["label", "bugfix"], ["priority", nil], ["status", nil], ["created_at", "2024-11-01 23:01:40.244848"], ["updated_at", "2024-11-01 23:01:40.244848"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (8.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:22:in `create'
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 11.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+NoMethodError (undefined method `todo_url' for an instance of Api::V1::TodosController):
+  
+app/controllers/api/v1/todos_controller.rb:23:in `create'
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:03:54 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mTodo Load (0.7ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 21ms (Views: 7.4ms | ActiveRecord: 1.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:05:10 -0400
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mTodo Load (0.5ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 7ms (Views: 4.4ms | ActiveRecord: 0.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:05:18 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mTodo Load (0.6ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 24ms (Views: 11.2ms | ActiveRecord: 1.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 19:05:23 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My new todo", "description"=>"This is my description", "label"=>"bugfix", "todo"=>{"title"=>"My new todo", "description"=>"This is my description", "label"=>"bugfix"}}
+Completed 422 Unprocessable Content in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 19:06:25 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My new todo", "description"=>"This is my description", "label"=>"bugfix", "todo"=>{"title"=>"My new todo", "description"=>"This is my description", "label"=>"bugfix"}}
+Completed 422 Unprocessable Content in 4ms (Views: 0.6ms | ActiveRecord: 1.1ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 19:06:46 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My new todo", "description"=>"This is my description", "label"=>"bugfix", "todo"=>{"title"=>"My new todo", "description"=>"This is my description", "label"=>"bugfix"}}
+Completed 422 Unprocessable Content in 3ms (Views: 0.4ms | ActiveRecord: 1.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 19:07:21 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My new todo", "description"=>"This is my description", "label"=>"bugfix", "todo"=>{"title"=>"My new todo", "description"=>"This is my description", "label"=>"bugfix"}}
+Completed 422 Unprocessable Content in 3ms (Views: 0.4ms | ActiveRecord: 0.7ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 19:08:25 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My new todo", "description"=>"This is my description", "label"=>"bugfix", "todo"=>{"title"=>"My new todo", "description"=>"This is my description", "label"=>"bugfix"}}
+Completed 422 Unprocessable Content in 12ms (Views: 0.5ms | ActiveRecord: 0.7ms (0 queries, 0 cached) | GC: 8.5ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:10:09 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 19:11:28 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My new todo", "description"=>"This is my description", "label"=>"bugfix", "todo"=>{"title"=>"My new todo", "description"=>"This is my description", "label"=>"bugfix"}}
+Completed 422 Unprocessable Content in 4ms (Views: 0.6ms | ActiveRecord: 0.8ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 19:11:51 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My new todo", "description"=>"This is my description", "label"=>"bugfix", "todo"=>{"title"=>"My new todo", "description"=>"This is my description", "label"=>"bugfix"}}
+Completed 422 Unprocessable Content in 11ms (Views: 7.7ms | ActiveRecord: 0.7ms (0 queries, 0 cached) | GC: 7.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 19:12:22 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My new todo", "description"=>"This is my description", "label"=>"bugfix", "todo"=>{"title"=>"My new todo", "description"=>"This is my description", "label"=>"bugfix"}}
+Completed 422 Unprocessable Content in 3ms (Views: 0.6ms | ActiveRecord: 1.2ms (0 queries, 0 cached) | GC: 0.1ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 19:12:37 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My new todo", "description"=>"This is my description", "label"=>"bugfix", "todo"=>{"title"=>"My new todo", "description"=>"This is my description", "label"=>"bugfix"}}
+Completed 422 Unprocessable Content in 3ms (Views: 0.1ms | ActiveRecord: 0.6ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 19:12:48 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My new todo", "description"=>"This is my description", "label"=>"bug", "todo"=>{"title"=>"My new todo", "description"=>"This is my description", "label"=>"bug"}}
+Completed 422 Unprocessable Content in 6ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 5.2ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 19:12:56 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My new todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"meg", "todo"=>{"title"=>"My new todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"meg"}}
+Completed 422 Unprocessable Content in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 19:13:08 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My new todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"oogie", "todo"=>{"title"=>"My new todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"oogie"}}
+Completed 422 Unprocessable Content in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 19:13:14 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My new todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog", "todo"=>{"title"=>"My new todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:22:in `create'
+  [1m[36mTodo Create (1.6ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "label", "priority", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "My new todo"], ["description", "This is my description"], ["label", "bug"], ["priority", "medium"], ["status", "backlog"], ["created_at", "2024-11-01 23:13:14.068888"], ["updated_at", "2024-11-01 23:13:14.068888"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:22:in `create'
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 7.1ms (1 query, 0 cached) | GC: 0.4ms)
+
+
+  
+NoMethodError (undefined method `todo_url' for an instance of Api::V1::TodosController):
+  
+app/controllers/api/v1/todos_controller.rb:23:in `create'
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 19:14:10 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My new todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog", "todo"=>{"title"=>"My new todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:22:in `create'
+  [1m[36mTodo Create (0.8ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "label", "priority", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "My new todo"], ["description", "This is my description"], ["label", "bug"], ["priority", "medium"], ["status", "backlog"], ["created_at", "2024-11-01 23:14:10.547566"], ["updated_at", "2024-11-01 23:14:10.547566"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (14.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:22:in `create'
+Completed 201 Created in 22ms (Views: 0.4ms | ActiveRecord: 16.4ms (1 query, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:14:13 -0400
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/api/v1/todos/1" for ::1 at 2024-11-01 19:14:28 -0400
+Processing by Api::V1::TodosController#destroy as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:46:in `set_todo'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:40:in `destroy'
+  [1m[36mTodo Destroy (1.0ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:40:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:40:in `destroy'
+Completed 204 No Content in 6ms (ActiveRecord: 1.2ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:14:31 -0400
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started PATCH "/api/v1/todos/2" for ::1 at 2024-11-01 19:15:13 -0400
+Processing by Api::V1::TodosController#update as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:46:in `set_todo'
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: todo):
+  
+app/controllers/api/v1/todos_controller.rb:51:in `todo_params'
+app/controllers/api/v1/todos_controller.rb:31:in `update'
+Started PATCH "/api/v1/todos/2" for ::1 at 2024-11-01 19:15:21 -0400
+Processing by Api::V1::TodosController#update as */*
+  Parameters: {"id"=>"2", "todo"=>{}}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:46:in `set_todo'
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: todo):
+  
+app/controllers/api/v1/todos_controller.rb:51:in `todo_params'
+app/controllers/api/v1/todos_controller.rb:31:in `update'
+Started PATCH "/api/v1/todos/2" for ::1 at 2024-11-01 19:15:42 -0400
+Processing by Api::V1::TodosController#update as */*
+  Parameters: {"todo"=>{}, "id"=>"2"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:46:in `set_todo'
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: todo):
+  
+app/controllers/api/v1/todos_controller.rb:51:in `todo_params'
+app/controllers/api/v1/todos_controller.rb:31:in `update'
+Started PATCH "/api/v1/todos/2" for ::1 at 2024-11-01 19:15:54 -0400
+Processing by Api::V1::TodosController#update as */*
+  Parameters: {"title"=>"My new Title", "id"=>"2", "todo"=>{"title"=>"My new Title"}}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:46:in `set_todo'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:31:in `update'
+  [1m[36mTodo Update (1.5ms)[0m  [1m[33mUPDATE "todos" SET "title" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["title", "My new Title"], ["updated_at", "2024-11-01 23:15:54.394593"], ["id", 2]]
+  ↳ app/controllers/api/v1/todos_controller.rb:31:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:31:in `update'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.7ms (2 queries, 0 cached) | GC: 0.6ms)
+
+
+Started PATCH "/api/v1/todos/2" for ::1 at 2024-11-01 19:16:01 -0400
+Processing by Api::V1::TodosController#update as */*
+  Parameters: {"id"=>"2", "todo"=>{}}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:46:in `set_todo'
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: todo):
+  
+app/controllers/api/v1/todos_controller.rb:51:in `todo_params'
+app/controllers/api/v1/todos_controller.rb:31:in `update'
+Started PATCH "/api/v1/todos/2" for ::1 at 2024-11-01 19:16:35 -0400
+Processing by Api::V1::TodosController#update as */*
+  Parameters: {"id"=>"2", "todo"=>{}}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:46:in `set_todo'
+Completed 500 Internal Server Error in 4ms (Views: 0.1ms | ActiveRecord: 0.7ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ArgumentError (When assigning attributes, you must pass a hash as an argument, String passed.):
+  
+app/controllers/api/v1/todos_controller.rb:31:in `update'
+Started PATCH "/api/v1/todos/2" for ::1 at 2024-11-01 19:20:08 -0400
+Processing by Api::V1::TodosController#update as */*
+  Parameters: {"id"=>"2", "todo"=>{}}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:46:in `set_todo'
+Completed 400 Bad Request in 5ms (ActiveRecord: 0.8ms (1 query, 0 cached) | GC: 0.7ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: todo):
+  
+app/controllers/api/v1/todos_controller.rb:51:in `todo_params'
+app/controllers/api/v1/todos_controller.rb:31:in `update'
+Started PATCH "/api/v1/todos/2" for ::1 at 2024-11-01 19:20:59 -0400
+Processing by Api::V1::TodosController#update as */*
+  Parameters: {"id"=>"2", "todo"=>{}}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:42:in `set_todo'
+Completed 400 Bad Request in 5ms (ActiveRecord: 0.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: todo):
+  
+app/controllers/api/v1/todos_controller.rb:47:in `todo_params'
+app/controllers/api/v1/todos_controller.rb:31:in `update'
+Started PATCH "/api/v1/todos/2" for ::1 at 2024-11-01 19:21:08 -0400
+Processing by Api::V1::TodosController#update as */*
+  Parameters: {"title"=>"A new title", "id"=>"2", "todo"=>{"title"=>"A new title"}}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:42:in `set_todo'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:31:in `update'
+  [1m[36mTodo Update (0.8ms)[0m  [1m[33mUPDATE "todos" SET "title" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["title", "A new title"], ["updated_at", "2024-11-01 23:21:08.198102"], ["id", 2]]
+  ↳ app/controllers/api/v1/todos_controller.rb:31:in `update'
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:31:in `update'
+Completed 204 No Content in 8ms (ActiveRecord: 5.2ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started PATCH "/api/v1/todos/2" for ::1 at 2024-11-01 19:21:18 -0400
+Processing by Api::V1::TodosController#update as */*
+  Parameters: {"title"=>"A new title", "id"=>"2", "todo"=>{"title"=>"A new title"}}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:44:in `set_todo'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started PATCH "/api/v1/todos/2" for ::1 at 2024-11-01 19:21:22 -0400
+Processing by Api::V1::TodosController#update as */*
+  Parameters: {"title"=>"A new title!!", "id"=>"2", "todo"=>{"title"=>"A new title!!"}}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:44:in `set_todo'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:31:in `update'
+  [1m[36mTodo Update (0.8ms)[0m  [1m[33mUPDATE "todos" SET "title" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["title", "A new title!!"], ["updated_at", "2024-11-01 23:21:22.583537"], ["id", 2]]
+  ↳ app/controllers/api/v1/todos_controller.rb:31:in `update'
+  [1m[36mTRANSACTION (7.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:31:in `update'
+Completed 200 OK in 11ms (Views: 0.3ms | ActiveRecord: 8.0ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 19:21:50 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTodo Create (1.0ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "label", "priority", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "My even newer todo"], ["description", "This is my description"], ["label", "bug"], ["priority", "medium"], ["status", "backlog"], ["created_at", "2024-11-01 23:21:50.622101"], ["updated_at", "2024-11-01 23:21:50.622101"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (9.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+Completed 201 Created in 15ms (Views: 0.2ms | ActiveRecord: 11.4ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 19:21:57 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium"}}
+Completed 422 Unprocessable Content in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started PATCH "/api/v1/todos/77" for ::1 at 2024-11-01 19:22:08 -0400
+Processing by Api::V1::TodosController#update as */*
+  Parameters: {"title"=>"A new title!!", "id"=>"77", "todo"=>{"title"=>"A new title!!"}}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:40:in `set_todo'
+Completed 404 Not Found in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 19:22:31 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTodo Create (0.8ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "label", "priority", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "My even newer todo"], ["description", "This is my description"], ["label", "bug"], ["priority", "medium"], ["status", "backlog"], ["created_at", "2024-11-01 23:22:31.958899"], ["updated_at", "2024-11-01 23:22:31.958899"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+Completed 201 Created in 3ms (Views: 0.1ms | ActiveRecord: 0.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2024-11-01 19:25:48 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/fresh/.asdf/installs/ruby/3.3.4/lib/ruby/gems/3.3.0/gems/railties-7.2.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/fresh/.asdf/installs/ruby/3.3.4/lib/ruby/gems/3.3.0/gems/railties-7.2.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.5ms | GC: 0.0ms)
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:47:00 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (4.4ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 21ms (Views: 14.2ms | ActiveRecord: 4.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:47:01 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:47:02 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:47:04 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:47:08 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:47:43 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 1.7ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:47:44 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 2ms (Views: 2.1ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:47:46 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:49:10 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.6ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 24ms (Views: 7.0ms | ActiveRecord: 1.0ms (1 query, 0 cached) | GC: 1.1ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:49:11 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:49:13 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:49:17 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:49:22 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:49:23 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:49:25 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:49:29 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:49:35 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:49:36 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 2ms (Views: 2.2ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:49:38 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:49:42 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:50:43 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:50:45 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:50:46 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:50:48 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:50:52 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:52:43 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.6ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 24ms (Views: 10.7ms | ActiveRecord: 1.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:52:44 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:52:46 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:52:50 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:52:58 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:52:59 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:53:01 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:53:05 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/?deleted=true" for ::1 at 2024-11-01 19:53:08 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"deleted"=>"true"}
+  Rendering /home/fresh/.asdf/installs/ruby/3.3.4/lib/ruby/gems/3.3.0/gems/railties-7.2.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/fresh/.asdf/installs/ruby/3.3.4/lib/ruby/gems/3.3.0/gems/railties-7.2.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.0ms | GC: 0.0ms)
+Completed 200 OK in 10ms (Views: 6.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:53:09 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:53:10 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:53:11 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:53:13 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:53:17 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 14ms (Views: 13.7ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 12.2ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:53:29 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:53:30 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:53:32 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:53:36 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:53:59 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:54:00 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 1ms (Views: 1.3ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:54:02 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:54:12 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:54:25 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:55:33 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:55:34 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:55:36 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:55:39 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:55:40 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:55:42 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:55:52 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (1.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 27ms (Views: 12.9ms | ActiveRecord: 1.7ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:55:54 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:56:35 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 19:56:47 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+

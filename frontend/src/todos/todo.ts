@@ -14,7 +14,7 @@ import { z } from "zod";
 // We're keeping a simple non-relational schema here.
 // IRL, you will have a schema for your data models.
 export const todoSchema = z.object({
-	id: z.string(),
+	id: z.number(),
 	title: z.string(),
 	status: z.union([
 		z.literal("backlog"),
@@ -37,7 +37,7 @@ export type Todo = z.infer<typeof todoSchema>;
 export type MakeTodoParams = Omit<Todo, "id"> & { id?: string };
 
 export function makeTodo({
-	id = Math.random().toString(36).substring(7),
+	id,
 	title,
 	label,
 	description,

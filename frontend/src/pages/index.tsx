@@ -1,20 +1,24 @@
-import { useEffect, useState } from "react";
-
-import { columns, getAllTodos, Todo } from "@/todos";
-import { DataTable } from "@/todos/components/data-table/data-table";
-
-import { UserNav } from "@/core/components/user-nav";
+import { columns, DataTable, getAllTodos } from "@/todos";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui";
-import { AppSidebar } from "@/core/components/app-sidebar";
+import { AppSidebar, UserNav } from "@/core";
+import { useQuery } from "@tanstack/react-query";
 
 export default function Home() {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const { data, isError, isLoading } = useQuery({
+    queryKey: ["todos"],
+    queryFn: getAllTodos,
+  });
 
-  useEffect(() => {
-    const allTodos = getAllTodos();
-    setTodos(allTodos);
-  }, []);
+  if (isError) {
+    return <div>Error...</div>;
+  }
 
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  if (data === undefined) {
+    return <div>No data...</div>;
+  }
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -35,7 +39,7 @@ export default function Home() {
               <UserNav />
             </div>
           </div>
-          <DataTable columns={columns} data={todos} />
+          <DataTable columns={columns} data={data} />
         </div>
       </div>
     </SidebarProvider>
