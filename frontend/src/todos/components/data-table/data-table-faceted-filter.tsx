@@ -6,13 +6,13 @@ import { cn } from "@/lib/utils";
 import {
 	Badge,
 	Button,
-	// Command,
-	// CommandEmpty,
-	// CommandGroup,
-	// CommandInput,
-	// CommandItem,
-	// CommandList,
-	// CommandSeparator,
+	Command,
+	CommandEmpty,
+	CommandGroup,
+	CommandInput,
+	CommandItem,
+	CommandList,
+	CommandSeparator,
 	Popover,
 	PopoverContent,
 	PopoverTrigger,
@@ -90,8 +90,7 @@ export function DataTableFacetedFilter<TData, TValue>({
 				</Button>
 			</PopoverTrigger>
 			<PopoverContent className="w-[200px] p-0" align="start">
-				{
-					/* <Command>
+				<Command>
 					<CommandInput placeholder={title} />
 					<CommandList>
 						<CommandEmpty>No results found.</CommandEmpty>
@@ -154,7 +153,9 @@ export function DataTableFacetedFilter<TData, TValue>({
 								<CommandGroup>
 									<CommandItem
 										onSelect={() =>
-											column?.setFilterValue(undefined)}
+											column?.setFilterValue(
+												undefined,
+											)}
 										className="justify-center text-center"
 									>
 										Clear filters
@@ -163,8 +164,7 @@ export function DataTableFacetedFilter<TData, TValue>({
 							</>
 						)}
 					</CommandList>
-				</Command> */
-				}
+				</Command>
 			</PopoverContent>
 		</Popover>
 	);
