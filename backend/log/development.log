@@ -1254,3 +1254,391 @@ Processing by Api::V1::TodosController#index as HTML
 Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
 
 
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 20:01:08 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.7ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 17ms (Views: 6.7ms | ActiveRecord: 1.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 20:01:39 -0400
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:03:10 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTodo Create (1.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "label", "priority", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "My even newer todo"], ["description", "This is my description"], ["label", "bug"], ["priority", "medium"], ["status", "backlog"], ["created_at", "2024-11-02 00:03:10.993637"], ["updated_at", "2024-11-02 00:03:10.993637"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+Completed 201 Created in 9ms (Views: 0.4ms | ActiveRecord: 6.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:03:11 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTodo Create (0.8ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "label", "priority", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "My even newer todo"], ["description", "This is my description"], ["label", "bug"], ["priority", "medium"], ["status", "backlog"], ["created_at", "2024-11-02 00:03:11.624681"], ["updated_at", "2024-11-02 00:03:11.624681"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 1.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:03:12 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTodo Create (1.7ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "label", "priority", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "My even newer todo"], ["description", "This is my description"], ["label", "bug"], ["priority", "medium"], ["status", "backlog"], ["created_at", "2024-11-02 00:03:12.222698"], ["updated_at", "2024-11-02 00:03:12.222698"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+Completed 201 Created in 5ms (Views: 0.2ms | ActiveRecord: 1.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:03:12 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTodo Create (0.9ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "label", "priority", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "My even newer todo"], ["description", "This is my description"], ["label", "bug"], ["priority", "medium"], ["status", "backlog"], ["created_at", "2024-11-02 00:03:12.832518"], ["updated_at", "2024-11-02 00:03:12.832518"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+Completed 201 Created in 3ms (Views: 0.1ms | ActiveRecord: 1.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:03:13 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTodo Create (0.8ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "label", "priority", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "My even newer todo"], ["description", "This is my description"], ["label", "bug"], ["priority", "medium"], ["status", "backlog"], ["created_at", "2024-11-02 00:03:13.390519"], ["updated_at", "2024-11-02 00:03:13.390519"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+Completed 201 Created in 4ms (Views: 0.4ms | ActiveRecord: 1.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:03:13 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTodo Create (0.8ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "label", "priority", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "My even newer todo"], ["description", "This is my description"], ["label", "bug"], ["priority", "medium"], ["status", "backlog"], ["created_at", "2024-11-02 00:03:13.932789"], ["updated_at", "2024-11-02 00:03:13.932789"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 0.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:03:14 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTodo Create (1.1ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "label", "priority", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "My even newer todo"], ["description", "This is my description"], ["label", "bug"], ["priority", "medium"], ["status", "backlog"], ["created_at", "2024-11-02 00:03:14.505921"], ["updated_at", "2024-11-02 00:03:14.505921"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 1.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:03:15 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTodo Create (0.8ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "label", "priority", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "My even newer todo"], ["description", "This is my description"], ["label", "bug"], ["priority", "medium"], ["status", "backlog"], ["created_at", "2024-11-02 00:03:15.094479"], ["updated_at", "2024-11-02 00:03:15.094479"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 1.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:03:15 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTodo Create (0.9ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "label", "priority", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "My even newer todo"], ["description", "This is my description"], ["label", "bug"], ["priority", "medium"], ["status", "backlog"], ["created_at", "2024-11-02 00:03:15.620515"], ["updated_at", "2024-11-02 00:03:15.620515"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 1.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:03:16 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTodo Create (1.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "label", "priority", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "My even newer todo"], ["description", "This is my description"], ["label", "bug"], ["priority", "medium"], ["status", "backlog"], ["created_at", "2024-11-02 00:03:16.181396"], ["updated_at", "2024-11-02 00:03:16.181396"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+Completed 201 Created in 16ms (Views: 0.2ms | ActiveRecord: 1.4ms (1 query, 0 cached) | GC: 11.9ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:03:16 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTodo Create (0.8ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "label", "priority", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "My even newer todo"], ["description", "This is my description"], ["label", "bug"], ["priority", "medium"], ["status", "backlog"], ["created_at", "2024-11-02 00:03:16.749632"], ["updated_at", "2024-11-02 00:03:16.749632"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 0.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:03:17 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTodo Create (1.0ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "label", "priority", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "My even newer todo"], ["description", "This is my description"], ["label", "bug"], ["priority", "medium"], ["status", "backlog"], ["created_at", "2024-11-02 00:03:17.339405"], ["updated_at", "2024-11-02 00:03:17.339405"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+Completed 201 Created in 4ms (Views: 0.3ms | ActiveRecord: 1.1ms (1 query, 0 cached) | GC: 0.8ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:03:17 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTodo Create (0.8ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "label", "priority", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "My even newer todo"], ["description", "This is my description"], ["label", "bug"], ["priority", "medium"], ["status", "backlog"], ["created_at", "2024-11-02 00:03:17.879538"], ["updated_at", "2024-11-02 00:03:17.879538"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+Completed 201 Created in 3ms (Views: 0.1ms | ActiveRecord: 0.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:03:18 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTodo Create (0.8ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "label", "priority", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "My even newer todo"], ["description", "This is my description"], ["label", "bug"], ["priority", "medium"], ["status", "backlog"], ["created_at", "2024-11-02 00:03:18.390760"], ["updated_at", "2024-11-02 00:03:18.390760"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 1.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:03:18 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTodo Create (0.9ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "label", "priority", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "My even newer todo"], ["description", "This is my description"], ["label", "bug"], ["priority", "medium"], ["status", "backlog"], ["created_at", "2024-11-02 00:03:18.947821"], ["updated_at", "2024-11-02 00:03:18.947821"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 1.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:03:19 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTodo Create (1.0ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "label", "priority", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "My even newer todo"], ["description", "This is my description"], ["label", "bug"], ["priority", "medium"], ["status", "backlog"], ["created_at", "2024-11-02 00:03:19.428928"], ["updated_at", "2024-11-02 00:03:19.428928"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 1.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 20:03:28 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.3ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:03:36 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTodo Create (1.1ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "label", "priority", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "My even newer todo"], ["description", "This is my description"], ["label", "bug"], ["priority", "medium"], ["status", "backlog"], ["created_at", "2024-11-02 00:03:36.864912"], ["updated_at", "2024-11-02 00:03:36.864912"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 1.3ms (1 query, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 20:03:38 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 20:04:22 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 3ms (Views: 3.1ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:07:47 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"todo", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"todo"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTodo Create (0.8ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "label", "priority", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "My even newer todo"], ["description", "This is my description"], ["label", "bug"], ["priority", "medium"], ["status", "todo"], ["created_at", "2024-11-02 00:07:47.004246"], ["updated_at", "2024-11-02 00:07:47.004246"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `create'
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 1.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 20:07:52 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 20:08:26 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:19:19 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium"}}
+Completed 422 Unprocessable Content in 10ms (Views: 0.2ms | ActiveRecord: 1.9ms (0 queries, 0 cached) | GC: 0.5ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:20:25 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium"}}
+Completed 400 Bad Request in 13ms (Views: 0.3ms | ActiveRecord: 2.3ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:21:45 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug"}}
+Completed 400 Bad Request in 5ms (Views: 0.2ms | ActiveRecord: 0.8ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:22:04 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug"}}
+Completed 400 Bad Request in 18ms (Views: 0.3ms | ActiveRecord: 0.7ms (0 queries, 0 cached) | GC: 14.8ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:22:15 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "status"=>"aasdf", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "status"=>"aasdf"}}
+Completed 400 Bad Request in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:30:11 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "status"=>"aasdf", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "status"=>"aasdf"}}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+NoMethodError (undefined method `details' for an instance of ActiveRecord::RecordInvalid):
+
+Causes:
+ActiveRecord::RecordInvalid (Validation failed: Status aasdf is not a valid status. Valid statuses are: backlog, todo, in_progress, done, canceled, Priority is required)
+  
+lib/api_exception.rb:42:in `block (3 levels) in included'
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:30:59 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "status"=>"aasdf", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "status"=>"aasdf"}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+NoMethodError (undefined method `details' for an instance of ActiveRecord::RecordInvalid):
+
+Causes:
+ActiveRecord::RecordInvalid (Validation failed: Status aasdf is not a valid status. Valid statuses are: backlog, todo, in_progress, done, canceled, Priority is required)
+  
+lib/api_exception.rb:42:in `block (3 levels) in included'
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:31:01 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "status"=>"aasdf", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "status"=>"aasdf"}}
+Completed 400 Bad Request in 3ms (Views: 0.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:31:27 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "status"=>"aasdf", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "status"=>"aasdf"}}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+NoMethodError (undefined method `details' for an instance of ActiveRecord::RecordInvalid):
+
+Causes:
+ActiveRecord::RecordInvalid (Validation failed: Status aasdf is not a valid status. Valid statuses are: backlog, todo, in_progress, done, canceled, Priority is required)
+  
+lib/api_exception.rb:45:in `block (3 levels) in included'
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:32:27 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "status"=>"aasdf", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "status"=>"aasdf"}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+NoMethodError (undefined method `details' for an instance of ActiveRecord::RecordInvalid):
+
+Causes:
+ActiveRecord::RecordInvalid (Validation failed: Status aasdf is not a valid status. Valid statuses are: backlog, todo, in_progress, done, canceled, Priority is required)
+  
+lib/api_exception.rb:45:in `block (3 levels) in included'
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:32:35 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "status"=>"aasdf", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "status"=>"aasdf"}}
+Completed 400 Bad Request in 3ms (Views: 0.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:33:17 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "status"=>"aasdf", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "status"=>"aasdf"}}
+Completed 400 Bad Request in 4ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:33:43 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "status"=>"aasdf", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "status"=>"aasdf"}}
+Completed 400 Bad Request in 6ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 2.2ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 20:33:46 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (1.4ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 7ms (Views: 3.4ms | ActiveRecord: 1.3ms (1 query, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 20:33:48 -0400
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.4ms)
+
+

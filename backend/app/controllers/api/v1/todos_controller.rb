@@ -20,7 +20,6 @@ module Api
         @todo = Todo.new(todo_params)
         @todo.save!
         render json: @todo, status: :created
-
       end
 
       # PATCH/PUT /todos/1
