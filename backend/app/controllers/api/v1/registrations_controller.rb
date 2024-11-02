@@ -7,14 +7,12 @@ module Api::V1
 
       if @user.save
         send_email_verification
-        render json: @user, status: :created
+        render json: @user.as_json(except: [:password_digest]), status: :created
       else
         render json: @user.errors, status: :unprocessable_entity
       end
     end
-    def verify
-    @user = User.find_by(verification_token: params[:verification_token])
-    end
+
 
     private
       def user_params
