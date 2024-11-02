@@ -18,7 +18,8 @@ module ApiException
     "Forbidden" => { status: 403, error_code: 40301, message: "Your own message in here" },
     #404
     "ActiveRecord::RecordNotFound" => { status: 404, error_code: 40401, message: "Cannot find record" },
-    "NotFound" => {status: 404, error_code: 40402, message: "Your own message in here"}
+    "NotFound" => {status: 404, error_code: 40402, message: "Your own message in here"},
+    "ActionController::ParameterMissing" => { status: 400, error_code: 40001, message: "Invalid request" },
   }
   class BaseError < StandardError
     def initialize(msg = nil)

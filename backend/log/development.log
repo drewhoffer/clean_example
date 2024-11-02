@@ -1642,3 +1642,285 @@ Processing by Api::V1::TodosController#index as HTML
 Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.4ms)
 
 
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 20:47:32 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate
+
+You have 2 pending migrations:
+
+db/migrate/20241102003952_create_users.rb
+db/migrate/20241102003953_create_sessions.rb
+
+
+):
+  
+activerecord (7.2.2) lib/active_record/migration.rb:756:in `check_pending_migrations'
+activerecord (7.2.2) lib/active_record/migration.rb:663:in `block (2 levels) in call'
+activesupport (7.2.2) lib/active_support/file_update_checker.rb:85:in `execute'
+activerecord (7.2.2) lib/active_record/migration.rb:668:in `block in call'
+activerecord (7.2.2) lib/active_record/migration.rb:660:in `synchronize'
+activerecord (7.2.2) lib/active_record/migration.rb:660:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'
+activesupport (7.2.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.2.2) lib/action_dispatch/middleware/callbacks.rb:30:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (7.2.2) lib/rails/rack/logger.rb:41:in `call_app'
+railties (7.2.2) lib/rails/rack/logger.rb:29:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/remote_ip.rb:96:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/request_id.rb:33:in `call'
+rack (3.1.8) lib/rack/runtime.rb:24:in `call'
+activesupport (7.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.2.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.2.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.1.8) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+rack-cors (2.0.2) lib/rack/cors.rb:102:in `call'
+railties (7.2.2) lib/rails/engine.rb:535:in `call'
+puma (6.4.3) lib/puma/configuration.rb:272:in `call'
+puma (6.4.3) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.3) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.3) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.3) lib/puma/server.rb:464:in `process_client'
+puma (6.4.3) lib/puma/server.rb:245:in `block in run'
+puma (6.4.3) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 20:47:33 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate
+
+You have 2 pending migrations:
+
+db/migrate/20241102003952_create_users.rb
+db/migrate/20241102003953_create_sessions.rb
+
+
+):
+  
+activerecord (7.2.2) lib/active_record/migration.rb:756:in `check_pending_migrations'
+activerecord (7.2.2) lib/active_record/migration.rb:663:in `block (2 levels) in call'
+activesupport (7.2.2) lib/active_support/file_update_checker.rb:85:in `execute'
+activerecord (7.2.2) lib/active_record/migration.rb:668:in `block in call'
+activerecord (7.2.2) lib/active_record/migration.rb:660:in `synchronize'
+activerecord (7.2.2) lib/active_record/migration.rb:660:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'
+activesupport (7.2.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.2.2) lib/action_dispatch/middleware/callbacks.rb:30:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (7.2.2) lib/rails/rack/logger.rb:41:in `call_app'
+railties (7.2.2) lib/rails/rack/logger.rb:29:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/remote_ip.rb:96:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/request_id.rb:33:in `call'
+rack (3.1.8) lib/rack/runtime.rb:24:in `call'
+activesupport (7.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.2.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.2.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.1.8) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+rack-cors (2.0.2) lib/rack/cors.rb:102:in `call'
+railties (7.2.2) lib/rails/engine.rb:535:in `call'
+puma (6.4.3) lib/puma/configuration.rb:272:in `call'
+puma (6.4.3) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.3) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.3) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.3) lib/puma/server.rb:464:in `process_client'
+puma (6.4.3) lib/puma/server.rb:245:in `block in run'
+puma (6.4.3) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+Started GET "/" for ::1 at 2024-11-01 20:47:36 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate
+
+You have 2 pending migrations:
+
+db/migrate/20241102003952_create_users.rb
+db/migrate/20241102003953_create_sessions.rb
+
+
+):
+  
+activerecord (7.2.2) lib/active_record/migration.rb:756:in `check_pending_migrations'
+activerecord (7.2.2) lib/active_record/migration.rb:663:in `block (2 levels) in call'
+activesupport (7.2.2) lib/active_support/file_update_checker.rb:85:in `execute'
+activerecord (7.2.2) lib/active_record/migration.rb:668:in `block in call'
+activerecord (7.2.2) lib/active_record/migration.rb:660:in `synchronize'
+activerecord (7.2.2) lib/active_record/migration.rb:660:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'
+activesupport (7.2.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.2.2) lib/action_dispatch/middleware/callbacks.rb:30:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (7.2.2) lib/rails/rack/logger.rb:41:in `call_app'
+railties (7.2.2) lib/rails/rack/logger.rb:29:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/remote_ip.rb:96:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/request_id.rb:33:in `call'
+rack (3.1.8) lib/rack/runtime.rb:24:in `call'
+activesupport (7.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.2.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.2.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.1.8) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.2.2) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+rack-cors (2.0.2) lib/rack/cors.rb:102:in `call'
+railties (7.2.2) lib/rails/engine.rb:535:in `call'
+puma (6.4.3) lib/puma/configuration.rb:272:in `call'
+puma (6.4.3) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.3) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.3) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.3) lib/puma/server.rb:464:in `process_client'
+puma (6.4.3) lib/puma/server.rb:245:in `block in run'
+puma (6.4.3) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+Started POST "/rails/actions" for ::1 at 2024-11-01 20:47:38 -0400
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20241102003952)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar NOT NULL, "password_digest" varchar NOT NULL, "verified" boolean DEFAULT 0 NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241102003952') RETURNING "version"[0m
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateSessions (20241102003953)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "sessions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "user_agent" varchar, "ip_address" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_758836b4f0"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_sessions_on_user_id" ON "sessions" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241102003953') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2024-11-01 20:47:38 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/fresh/.asdf/installs/ruby/3.3.4/lib/ruby/gems/3.3.0/gems/railties-7.2.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/fresh/.asdf/installs/ruby/3.3.4/lib/ruby/gems/3.3.0/gems/railties-7.2.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.8ms | GC: 0.0ms)
+Completed 200 OK in 6ms (Views: 1.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/sessions" for ::1 at 2024-11-01 20:47:44 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/sessions"):
+  
+Started GET "/sessions" for ::1 at 2024-11-01 20:48:01 -0400
+Processing by SessionsController#index as HTML
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:48:43 -0400
+Processing by Api::V1::TodosController#create as */*
+Completed 400 Bad Request in 5ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.1ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: todo):
+  
+app/controllers/api/v1/todos_controller.rb:44:in `todo_params'
+app/controllers/api/v1/todos_controller.rb:20:in `create'
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:49:01 -0400
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "status"=>"aasdf", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "status"=>"aasdf"}}
+Completed 400 Bad Request in 15ms (Views: 0.2ms | ActiveRecord: 1.8ms (0 queries, 0 cached) | GC: 1.6ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:49:06 -0400
+Processing by Api::V1::TodosController#create as */*
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: todo):
+  
+app/controllers/api/v1/todos_controller.rb:44:in `todo_params'
+app/controllers/api/v1/todos_controller.rb:20:in `create'
+Started POST "/api/v1/sessions" for ::1 at 2024-11-01 20:49:20 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/sessions"):
+  
+Started GET "/api/v1/todos" for ::1 at 2024-11-01 20:49:27 -0400
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:10:in `index'
+Completed 200 OK in 8ms (Views: 3.2ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.7ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:49:38 -0400
+Processing by Api::V1::TodosController#create as */*
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: todo):
+  
+app/controllers/api/v1/todos_controller.rb:44:in `todo_params'
+app/controllers/api/v1/todos_controller.rb:20:in `create'
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:51:24 -0400
+  
+NameError (wrong constant name ActionController:ParameterMissing):
+  
+lib/api_exception.rb:36:in `const_defined?'
+lib/api_exception.rb:36:in `block (2 levels) in included'
+lib/api_exception.rb:35:in `each'
+lib/api_exception.rb:35:in `block in included'
+lib/api_exception.rb:34:in `class_eval'
+lib/api_exception.rb:34:in `included'
+app/controllers/api/v1/application_controller.rb:4:in `include'
+app/controllers/api/v1/application_controller.rb:4:in `<class:ApplicationController>'
+app/controllers/api/v1/application_controller.rb:3:in `<module:V1>'
+app/controllers/api/v1/application_controller.rb:2:in `<module:Api>'
+app/controllers/api/v1/application_controller.rb:1:in `<main>'
+app/controllers/api/v1/todos_controller.rb:3:in `<module:V1>'
+app/controllers/api/v1/todos_controller.rb:2:in `<module:Api>'
+app/controllers/api/v1/todos_controller.rb:1:in `<main>'
+Started POST "/api/v1/todos" for ::1 at 2024-11-01 20:51:40 -0400
+Processing by Api::V1::TodosController#create as */*
+Completed 400 Bad Request in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/api/v1/sessions" for ::1 at 2024-11-01 21:00:12 -0400
+  
+NameError (uninitialized constant ApplicationController):
+  
+app/controllers/api/v1/sessions_controller.rb:1:in `<main>'
+Started GET "/api/v1/sessions" for ::1 at 2024-11-01 21:17:29 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+Zeitwerk::NameError (expected file /home/fresh/video_ideas/clean_example/backend/app/controllers/api/v1/application_controller.rb to define constant Api::V1::ApplicationController, but didn't):
+  
+app/controllers/api/v1/sessions_controller.rb:2:in `<module:V1>'
+app/controllers/api/v1/sessions_controller.rb:1:in `<main>'
+Started GET "/api/v1/sessions" for ::1 at 2024-11-01 21:18:07 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::SessionsController#index as */*
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 0.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
