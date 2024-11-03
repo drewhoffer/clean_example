@@ -42,13 +42,11 @@ export const EditTodoDialog = ({ todo }: EditTodoDialogProps) => {
 		},
 	});
 
-	const { push, reload } = useRouter();
+	const { reload } = useRouter();
 
 	async function onSubmit(values: EditTodo) {
 		try {
-			editTodo({ ...values });
-
-			await push("/", { query: { success: "true" } });
+			await editTodo({ ...values });
 			reload();
 		} catch (e) {
 			console.error(e);

@@ -39,13 +39,11 @@ export const CreateTodoDialog = () => {
 		},
 	});
 
-	const { push, reload } = useRouter();
+	const { reload } = useRouter();
 
 	async function onSubmit(values: CreateTodo) {
 		try {
-			createTodo({ ...values });
-
-			await push("/", { query: { success: "true" } });
+			await createTodo({ ...values });
 			reload();
 		} catch (e) {
 			console.error(e);

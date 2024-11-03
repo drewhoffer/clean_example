@@ -16,13 +16,11 @@ export interface DeleteTodoDialogProps {
 }
 
 export const DeleteTodoDialog = ({ todo }: DeleteTodoDialogProps) => {
-	const { push, reload } = useRouter();
+	const { reload } = useRouter();
 
 	async function onSubmit() {
 		try {
-			deleteTodo({ ...todo });
-
-			await push("/", { query: { deleted: "true" } });
+			await deleteTodo({ id: todo.id });
 			reload();
 		} catch (e) {
 			console.error(e);

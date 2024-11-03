@@ -1,18 +1,9 @@
-import { makeTodo } from "../todo";
+import { http } from "@/lib";
+import { makeTodo, Todo } from "../todo";
 import { CreateTodo } from "../validations";
 
-export const createTodo = (newTodo: CreateTodo) => {
-	try {
-		const todos = JSON.parse(localStorage.getItem("todos") || "[]");
-
-		const createdTodo = makeTodo({
-			...newTodo,
-		});
-		todos.push(createdTodo);
-		localStorage.setItem("todos", JSON.stringify(todos));
-		return createdTodo;
-	} catch (error) {
-		console.error("Failed to create todo:", error);
-		return null;
-	}
-};
+export const createTodo = async (newTodo: CreateTodo): Promise<Todo> =>
+	await http.post<Todo>(
+		"/todos",
+		makeTodo(newTodo),
+	);
