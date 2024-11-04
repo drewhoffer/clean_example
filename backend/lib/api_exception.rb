@@ -10,8 +10,9 @@ module ApiException
   #
   EXCEPTIONS = {
     #400
-    "ActiveRecord::RecordInvalid" => { status: 400, error_code: 40001, message: "Invalid request" },
-    "BadRequest" => { status: 400, error_code: 40002, message: "Your own message in here" },
+    "ActiveRecord::RecordInvalid" => { status: 400, error_code: 40001, message: "Bad Request" },
+    "BadRequest" => { status: 400, error_code: 40002, message: "Bad Request" },
+    "ActionController::ParameterMissing" => { status: 400, error_code: 40004, message: "Bad Request" },
     #401
     "Unauthorized" => { status: 401, error_code: 40101, message: "Your own message in here" },
     #403
@@ -19,7 +20,6 @@ module ApiException
     #404
     "ActiveRecord::RecordNotFound" => { status: 404, error_code: 40401, message: "Cannot find record" },
     "NotFound" => {status: 404, error_code: 40402, message: "Your own message in here"},
-    "ActionController::ParameterMissing" => { status: 400, error_code: 40001, message: "Invalid request" },
   }
   class BaseError < StandardError
     def initialize(msg = nil)

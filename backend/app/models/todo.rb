@@ -21,7 +21,7 @@ class Todo < ApplicationRecord
 
   def validate_label
     if label.blank?
-      errors.add(:label, "Label is required")
+      errors.add(:label, "is required")
     elsif !LABELS.map(&:to_s).include?(label)
       errors.add(:label, "#{label} is not a valid label. Valid labels are: #{LABELS.join(', ')}")
     end

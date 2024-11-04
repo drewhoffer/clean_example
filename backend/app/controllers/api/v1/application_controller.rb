@@ -1,6 +1,7 @@
 module Api::V1
   class ApplicationController < ActionController::API
     include ActionController::HttpAuthentication::Token::ControllerMethods
+    include ApiException::Handler
 
     before_action :set_current_request_details
     before_action :authenticate
