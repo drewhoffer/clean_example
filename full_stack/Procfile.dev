@@ -1,3 +1,3 @@
 web: env RUBY_DEBUG_OPEN=true bin/rails server
 js: deno task build --watch
-css: deno task build:css --watch
+css: bin/rails tailwindcss:watch
