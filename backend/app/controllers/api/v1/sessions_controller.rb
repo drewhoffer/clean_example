@@ -17,7 +17,7 @@ module Api::V1
         @session = user.sessions.create!
         response.set_header "X-Session-Token", @session.signed_id
 
-        render json: @session, status: :created
+        render json: { session: @session, token: @session.signed_id }, status: :created
       else
         render json: { error: "That email or password is incorrect" }, status: :unauthorized
       end
