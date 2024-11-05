@@ -15,9 +15,9 @@ module Api::V1
     def create
       if user = User.authenticate_by(email: params[:email], password: params[:password])
         @session = user.sessions.create!
-        response.set_header "X-Session-Token", @session.signed_id
+        cookies.signed.permanent[:session_token] = { value: @session.id, httponly: true }
 
-        render json: { session: @session, token: @session.signed_id }, status: :created
+        render json: { message: "Signed in successfully" }, status: :created
       else
         render json: { error: "That email or password is incorrect" }, status: :unauthorized
       end

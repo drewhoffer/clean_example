@@ -2,16 +2,18 @@ module Api::V1
   class ApplicationController < ActionController::API
     include ActionController::HttpAuthentication::Token::ControllerMethods
     include ApiException::Handler
+    include ActionController::Cookies
 
     before_action :set_current_request_details
     before_action :authenticate
 
     private
       def authenticate
-        if session_record = authenticate_with_http_token { |token, _| Session.find_signed(token) }
+        if session_record = Session.find_by_id(cookies.signed[:session_token])
           Current.session = session_record
         else
-          request_http_token_authentication
+            render json: { error: 'Unauthorized' }, status: :unauthorized
+          # request_http_token_authentication
         end
       end
 

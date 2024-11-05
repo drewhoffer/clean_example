@@ -1924,3 +1924,182 @@ Filter chain halted as :authenticate rendered or redirected
 Completed 401 Unauthorized in 2ms (Views: 0.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
 
 
+Started POST "/api/v1/sign_in" for ::1 at 2024-11-04 20:50:24 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"email"=>"[FILTERED]", "password"=>"[FILTERED]", "session"=>{}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:16:in `create'
+Completed 401 Unauthorized in 199ms (Views: 0.2ms | ActiveRecord: 1.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/sign_up" for ::1 at 2024-11-04 20:50:28 -0500
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"email"=>"[FILTERED]", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]", "registration"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :passwordConfirmation, :registration. Context: { controller: Api::V1::RegistrationsController, action: create, request: #<ActionDispatch::Request:0x00007fbfb089b198>, params: {"email"=>"[FILTERED]", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]", "controller"=>"api/v1/registrations", "action"=>"create", "registration"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]"}} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:8:in `create'
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "verified", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["email", "[FILTERED]"], ["password_digest", "[FILTERED]"], ["verified", 0], ["created_at", "2024-11-05 01:50:28.284137"], ["updated_at", "2024-11-05 01:50:28.284137"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (10.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:8:in `create'
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: 06ed81de-6cfb-45d9-9035-75fb1c871da4) to Async(default) with arguments: "UserMailer", "email_verification", "deliver_now", {:params=>{:user=>#<GlobalID:0x00007fbfadfc6088 @uri=#<URI::GID gid://backend/User/1>>}, :args=>[]}
+[ActiveJob] ↳ app/controllers/api/v1/registrations_controller.rb:23:in `send_email_verification'
+Completed 201 Created in 228ms (Views: 0.1ms | ActiveRecord: 11.0ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [06ed81de-6cfb-45d9-9035-75fb1c871da4]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActionMailer::MailDeliveryJob] [06ed81de-6cfb-45d9-9035-75fb1c871da4] Performing ActionMailer::MailDeliveryJob (Job ID: 06ed81de-6cfb-45d9-9035-75fb1c871da4) from Async(default) enqueued at 2024-11-05T01:50:28.324838900Z with arguments: "UserMailer", "email_verification", "deliver_now", {:params=>{:user=>#<GlobalID:0x00007fbfade97220 @uri=#<URI::GID gid://backend/User/1>>}, :args=>[]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [06ed81de-6cfb-45d9-9035-75fb1c871da4]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [06ed81de-6cfb-45d9-9035-75fb1c871da4]   Rendering user_mailer/email_verification.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [06ed81de-6cfb-45d9-9035-75fb1c871da4]   Rendered user_mailer/email_verification.html.erb within layouts/mailer (Duration: 0.6ms | GC: 0.0ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [06ed81de-6cfb-45d9-9035-75fb1c871da4]   Rendered layout layouts/mailer.html.erb (Duration: 1.2ms | GC: 0.0ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [06ed81de-6cfb-45d9-9035-75fb1c871da4] UserMailer#email_verification: processed outbound mail in 19.7ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [06ed81de-6cfb-45d9-9035-75fb1c871da4] Delivered mail 672979e456c9f_fae584896746@DESKTOP-H2OQJ6C.mail (6.1ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [06ed81de-6cfb-45d9-9035-75fb1c871da4] Date: Mon, 04 Nov 2024 20:50:28 -0500
+From: from@example.com
+To: drewsdhoffer@gmail.com
+Message-ID: <672979e456c9f_fae584896746@DESKTOP-H2OQJ6C.mail>
+Subject: Verify your email
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!-- BEGIN app/views/layouts/mailer.html.erb --><!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!-- BEGIN app/views/user_mailer/email_verification.html.erb --><p>Hey there,</p>
+<p>This is to confirm that drewsdhoffer@gmail.com is the email you want to use on your account. If you ever lose your password, that's where we'll email a reset link.</p>
+<p><strong>You must hit the link below to confirm that you received this email.</strong></p>
+<p><a href="http://localhost:3000/api/v1/identity/email_verification?sid=eyJfcmFpbHMiOnsiZGF0YSI6WzEsImRyZXdzZGhvZmZlckBnbWFpbC5jb20iXSwiZXhwIjoiMjAyNC0xMS0wN1QwMTo1MDoyOC4zMzZaIiwicHVyIjoiVXNlclxuZW1haWxfdmVyaWZpY2F0aW9uXG4xNzI4MDAifX0%3D--1213f719193b9590a85859398adae56753a63321">Yes, use this email for my account</a></p>
+<hr>
+<p>Have questions or need help? Just reply to this email and our support team will help you sort it out.</p>
+<!-- END app/views/user_mailer/email_verification.html.erb -->
+  </body>
+</html>
+<!-- END app/views/layouts/mailer.html.erb -->
+[ActiveJob] [ActionMailer::MailDeliveryJob] [06ed81de-6cfb-45d9-9035-75fb1c871da4] Performed ActionMailer::MailDeliveryJob (Job ID: 06ed81de-6cfb-45d9-9035-75fb1c871da4) from Async(default) in 32.51ms
+Started POST "/api/v1/sign_in" for ::1 at 2024-11-04 20:50:32 -0500
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"email"=>"[FILTERED]", "password"=>"[FILTERED]", "session"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:17:in `create'
+  [1m[36mSession Create (0.9ms)[0m  [1m[32mINSERT INTO "sessions" ("user_id", "user_agent", "ip_address", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["user_id", 1], ["user_agent", "PostmanRuntime/7.42.0"], ["ip_address", "::1"], ["created_at", "2024-11-05 01:50:32.750929"], ["updated_at", "2024-11-05 01:50:32.750929"]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:17:in `create'
+Completed 500 Internal Server Error in 192ms (ActiveRecord: 1.3ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `cookies' for an instance of Api::V1::SessionsController):
+  
+app/controllers/api/v1/sessions_controller.rb:18:in `create'
+Started POST "/api/v1/sign_in" for ::1 at 2024-11-04 20:51:46 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"email"=>"[FILTERED]", "password"=>"[FILTERED]", "session"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:17:in `create'
+  [1m[36mSession Create (0.9ms)[0m  [1m[32mINSERT INTO "sessions" ("user_id", "user_agent", "ip_address", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["user_id", 1], ["user_agent", "PostmanRuntime/7.42.0"], ["ip_address", "::1"], ["created_at", "2024-11-05 01:51:46.827166"], ["updated_at", "2024-11-05 01:51:46.827166"]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:17:in `create'
+Completed 500 Internal Server Error in 204ms (ActiveRecord: 7.9ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `cookies' for an instance of Api::V1::SessionsController):
+  
+app/controllers/api/v1/sessions_controller.rb:18:in `create'
+Started POST "/api/v1/sign_in" for ::1 at 2024-11-04 20:52:31 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"email"=>"[FILTERED]", "password"=>"[FILTERED]", "session"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:17:in `create'
+  [1m[36mSession Create (0.9ms)[0m  [1m[32mINSERT INTO "sessions" ("user_id", "user_agent", "ip_address", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["user_id", 1], ["user_agent", "PostmanRuntime/7.42.0"], ["ip_address", "::1"], ["created_at", "2024-11-05 01:52:32.212714"], ["updated_at", "2024-11-05 01:52:32.212714"]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (8.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:17:in `create'
+Completed 201 Created in 208ms (Views: 0.1ms | ActiveRecord: 10.1ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-04 20:52:38 -0500
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/application_controller.rb:12:in `block in authenticate'
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:9:in `index'
+Completed 200 OK in 11ms (Views: 6.5ms | ActiveRecord: 0.6ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-04 20:53:00 -0500
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog"}}
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/sign_in" for ::1 at 2024-11-04 20:57:29 -0500
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"email"=>"[FILTERED]", "password"=>"[FILTERED]", "session"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:17:in `create'
+  [1m[36mSession Create (0.9ms)[0m  [1m[32mINSERT INTO "sessions" ("user_id", "user_agent", "ip_address", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["user_id", 1], ["user_agent", "PostmanRuntime/7.42.0"], ["ip_address", "::1"], ["created_at", "2024-11-05 01:57:29.785131"], ["updated_at", "2024-11-05 01:57:29.785131"]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (13.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:17:in `create'
+Completed 201 Created in 213ms (Views: 0.1ms | ActiveRecord: 15.7ms (2 queries, 0 cached) | GC: 9.6ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-04 20:57:37 -0500
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/application_controller.rb:12:in `authenticate'
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:9:in `index'
+Completed 200 OK in 14ms (Views: 7.7ms | ActiveRecord: 0.5ms (2 queries, 0 cached) | GC: 0.8ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2024-11-04 20:57:43 -0500
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog", "todo"=>{"title"=>"My even newer todo", "description"=>"This is my description", "label"=>"bug", "priority"=>"medium", "status"=>"backlog"}}
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/application_controller.rb:12:in `authenticate'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:20:in `create'
+  [1m[36mTodo Create (1.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "label", "priority", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "My even newer todo"], ["description", "This is my description"], ["label", "bug"], ["priority", "medium"], ["status", "backlog"], ["created_at", "2024-11-05 01:57:43.723246"], ["updated_at", "2024-11-05 01:57:43.723246"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:20:in `create'
+Completed 201 Created in 5ms (Views: 0.2ms | ActiveRecord: 1.4ms (2 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-11-04 20:57:47 -0500
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/application_controller.rb:12:in `authenticate'
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos"[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:9:in `index'
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.1ms (2 queries, 0 cached) | GC: 0.1ms)
+
+
