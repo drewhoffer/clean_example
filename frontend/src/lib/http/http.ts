@@ -35,7 +35,7 @@ export const makeHttp = (
 			// 	throw errorHandler(innerError);
 			// }
 			// }
-
+			console.log(error);
 			throw errorHandler(error);
 		}
 	}
@@ -73,9 +73,10 @@ export const makeHttp = (
 
 	async function deleteReq<T>(
 		url: string,
+		body?: unknown,
 		config?: AxiosRequestConfig,
 	): Promise<QueryResponse<T>> {
-		const request = () => httpLib.delete(url, config);
+		const request = () => httpLib.deleteReq(url, body, config);
 		return await (
 			await handleRequest(request)
 		).data;

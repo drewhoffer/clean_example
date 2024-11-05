@@ -5,6 +5,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { labels, priorities, statuses } from "../../todo";
 import { DataTableColumnHeader } from "./data-table-column-header";
 import { DataTableRowActions } from "./data-table-row-actions";
+import { DataTableBulkActionOptions } from "./data-table-bulk-action-options";
 import { Todo } from "../../todo";
 import { Badge, Checkbox } from "@/lib/ui";
 
@@ -117,9 +118,7 @@ export const columns: ColumnDef<Todo>[] = [
 	},
 	{
 		id: "actions",
-		header: ({ column }) => (
-			<DataTableColumnHeader column={column} title="Actions" />
-		),
+		header: ({ table }) => <DataTableBulkActionOptions table={table} />,
 		cell: ({ row }) => <DataTableRowActions row={row} />,
 	},
 ];

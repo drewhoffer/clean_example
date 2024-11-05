@@ -1,36 +1,27 @@
-import { DotsHorizontalIcon } from "@radix-ui/react-icons";
-import { Row } from "@tanstack/react-table";
+import { DotsVerticalIcon } from "@radix-ui/react-icons";
+import { Table } from "@tanstack/react-table";
 
-import { labels, todoSchema } from "../../todo";
 import {
 	Button,
 	Dialog,
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
-	DropdownMenuRadioGroup,
-	DropdownMenuRadioItem,
-	DropdownMenuSeparator,
 	DropdownMenuShortcut,
-	DropdownMenuSub,
-	DropdownMenuSubContent,
-	DropdownMenuSubTrigger,
 	DropdownMenuTrigger,
 } from "@/lib/ui";
 import { useState } from "react";
-import DeleteTodoDialog from "../delete-todo-dialog";
+import { DeleteManyTodosDialog } from "../delete-many-todos-dialog";
+import { Todo } from "@/todos/todo";
 
 interface DataTableRowActionsProps<TData> {
-	row: Row<TData>;
+	table: Table<TData>;
 }
 
 export function DataTableBulkActionOptions<TData>({
-	row,
+	table,
 }: DataTableRowActionsProps<TData>) {
-	const todo = todoSchema.parse(row.original);
-
 	const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
-
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
@@ -38,7 +29,7 @@ export function DataTableBulkActionOptions<TData>({
 					variant="ghost"
 					className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
 				>
-					<DotsHorizontalIcon className="h-4 w-4" />
+					<DotsVerticalIcon className="h-4 w-4" />
 					<span className="sr-only">Open menu</span>
 				</Button>
 			</DropdownMenuTrigger>
@@ -46,27 +37,9 @@ export function DataTableBulkActionOptions<TData>({
 				align="end"
 				className="w-[160px]"
 			>
-				<DropdownMenuItem>Make a copy</DropdownMenuItem>
-				<DropdownMenuItem>Favorite</DropdownMenuItem>
-				<DropdownMenuSeparator />
-				<DropdownMenuSub>
-					<DropdownMenuSubTrigger>Labels</DropdownMenuSubTrigger>
-					<DropdownMenuSubContent>
-						<DropdownMenuRadioGroup value={todo.label}>
-							{labels.map((label) => (
-								<DropdownMenuRadioItem
-									key={label.value}
-									value={label.value}
-								>
-									{label.label}
-								</DropdownMenuRadioItem>
-							))}
-						</DropdownMenuRadioGroup>
-					</DropdownMenuSubContent>
-				</DropdownMenuSub>
-				<DropdownMenuSeparator />
 				<DropdownMenuItem
 					onClick={() => setIsDeleteDialogOpen(true)}
+					disabled={!table.getIsSomeRowsSelected()}
 				>
 					Delete
 					<DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
@@ -77,7 +50,11 @@ export function DataTableBulkActionOptions<TData>({
 				open={isDeleteDialogOpen}
 				onOpenChange={setIsDeleteDialogOpen}
 			>
-				<DeleteTodoDialog todo={todo} />
+				<DeleteManyTodosDialog
+					todos={table.getSelectedRowModel().rows.map((row) =>
+						row.original
+					) as Todo[]}
+				/>
 			</Dialog>
 		</DropdownMenu>
 	);

@@ -32,6 +32,11 @@ module Api::V1
       @todo.destroy!
     end
 
+    def destroy_many
+      Todo.where(id: params[:ids]).destroy_all
+      head :no_content
+    end
+
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_todo
@@ -41,6 +46,10 @@ module Api::V1
       # Only allow a list of trusted parameters through.
       def todo_params
         params.require(:todo).permit(:title, :status, :label, :priority, :description)
+      end
+
+      def destroy_many_params
+        params.permit(ids: [])
       end
   end
 end

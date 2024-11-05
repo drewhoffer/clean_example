@@ -1,5 +1,6 @@
 export * from "./columns";
 export * from "./data-table";
+export * from "./data-table-bulk-action-options";
 export * from "./data-table-column-header";
 export * from "./data-table-create-button";
 export * from "./data-table-faceted-filter";

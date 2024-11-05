@@ -20,6 +20,7 @@ export interface Http {
 	) => Promise<QueryResponse<T>>;
 	deleteReq: <T>(
 		url: string,
+		body?: unknown,
 		config?: AxiosRequestConfig,
 	) => Promise<QueryResponse<T>>;
 }

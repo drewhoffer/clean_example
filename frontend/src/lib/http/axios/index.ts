@@ -52,9 +52,10 @@ const axiosAdapter = (baseUrl: string) => {
 
 	async function deleteReq(
 		url: string,
+		body?: unknown,
 		config?: AxiosRequestConfig,
 	): Promise<AxiosResponse> {
-		return await api.delete(url, config);
+		return await api.delete(url, { data: body, ...config });
 	}
 
 	// This will need to go into a different class called AxiosErrorAdapter later.
