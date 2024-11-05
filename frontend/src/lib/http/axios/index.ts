@@ -27,18 +27,10 @@ const axiosAdapter = (baseUrl: string) => {
 		withCredentials: true,
 	});
 
-	function getToken() {
-		const token = localStorage.getItem("token");
-		if (token) {
-			api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-		}
-	}
-
 	async function get(
 		url: string,
 		config?: AxiosRequestConfig,
 	): Promise<AxiosResponse> {
-		getToken();
 		return await api.get(url, config);
 	}
 
@@ -47,8 +39,6 @@ const axiosAdapter = (baseUrl: string) => {
 		body?: unknown,
 		config?: AxiosRequestConfig,
 	): Promise<AxiosResponse> {
-		getToken();
-
 		return await api.post(url, body, config);
 	}
 
@@ -57,16 +47,13 @@ const axiosAdapter = (baseUrl: string) => {
 		body?: unknown,
 		config?: AxiosRequestConfig,
 	): Promise<AxiosResponse> {
-		getToken();
-
 		return await api.patch(url, body, config);
 	}
+
 	async function deleteReq(
 		url: string,
 		config?: AxiosRequestConfig,
 	): Promise<AxiosResponse> {
-		getToken();
-
 		return await api.delete(url, config);
 	}
 
