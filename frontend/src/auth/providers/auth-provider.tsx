@@ -1,7 +1,7 @@
-import { http } from "@/lib";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { AuthContext } from "../contexts";
+import { getSessions } from "../queries";
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 	const router = useRouter();
@@ -10,15 +10,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 	useEffect(() => {
 		const checkAuth = async () => {
 			try {
-				await http.get("/sessions");
+				await getSessions();
 				setIsAuthenticated(true);
-			} catch (e) {
-				console.error(e);
+			} catch {
 				setIsAuthenticated(false);
 				router.push("/login");
 			}
 		};
-		if (router.pathname !== "/login") {
+		if (router.pathname !== "/login" && router.pathname !== "/sign-up") {
 			checkAuth();
 		}
 	}, [router]);

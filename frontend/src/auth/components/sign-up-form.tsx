@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Login, loginSchema } from "../validations";
+import { SignUp, signUpSchema } from "../validations";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
 	Button,
@@ -11,26 +11,26 @@ import {
 	FormLabel,
 	FormMessage,
 	Input,
-	Label,
 } from "@/components/ui";
-import Link from "next/link";
-import { login } from "../mutations";
+import { login, signUp } from "../mutations";
 
 interface LoginFormProps {
 	onSuccess?: () => unknown;
 }
 
-export const LoginForm = ({ onSuccess }: LoginFormProps) => {
-	const form = useForm<Login>({
-		resolver: zodResolver(loginSchema),
+export const SignUpForm = ({ onSuccess }: LoginFormProps) => {
+	const form = useForm<SignUp>({
+		resolver: zodResolver(signUpSchema),
 		defaultValues: {
 			email: "",
 			password: "",
+			passwordConfirmation: "",
 		},
 	});
 
-	async function onSubmit(values: Login) {
+	async function onSubmit(values: SignUp) {
 		try {
+			await signUp(values);
 			await login(values);
 			onSuccess?.();
 		} catch (error) {
@@ -67,30 +67,47 @@ export const LoginForm = ({ onSuccess }: LoginFormProps) => {
 						/>
 					</div>
 					<div className="grid gap-2">
-						<div className="flex items-center">
-							<Label htmlFor="password">
-								Password
-							</Label>
-							<Link
-								href="#"
-								className="ml-auto inline-block text-sm underline"
-							>
-								Forgot your password?
-							</Link>
-						</div>
 						<FormField
 							control={form.control}
 							name="password"
 							render={({ field }) => (
-								<Input
-									type="password"
-									{...field}
-								/>
+								<FormItem>
+									<FormLabel>Password</FormLabel>
+									<FormControl>
+										<Input
+											type="password"
+											{...field}
+										/>
+									</FormControl>
+									<FormDescription>
+										Your password must be at least 8
+										characters long.
+									</FormDescription>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+					</div>
+					<div className="grid gap-2">
+						<FormField
+							control={form.control}
+							name="passwordConfirmation"
+							render={({ field }) => (
+								<FormItem>
+									<FormLabel>Confirm Password</FormLabel>
+									<FormControl>
+										<Input
+											type="password"
+											{...field}
+										/>
+									</FormControl>
+									<FormMessage />
+								</FormItem>
 							)}
 						/>
 					</div>
 					<Button type="submit" className="w-full">
-						Login
+						Create
 					</Button>
 				</div>
 			</form>
@@ -98,4 +115,4 @@ export const LoginForm = ({ onSuccess }: LoginFormProps) => {
 	);
 };
 
-export default LoginForm;
+export default SignUpForm;

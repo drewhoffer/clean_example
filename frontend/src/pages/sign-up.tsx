@@ -1,4 +1,4 @@
-import { LoginForm } from "@/auth";
+import { SignUpForm } from "@/auth/components";
 import {
 	Card,
 	CardContent,
@@ -9,23 +9,23 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-export const LoginPage = () => {
+export const SignUpPage = () => {
 	const router = useRouter();
 	return (
 		<div className="flex h-screen w-full items-center justify-center px-4">
 			<Card className="mx-auto max-w-sm">
 				<CardHeader>
-					<CardTitle className="text-2xl">Login</CardTitle>
+					<CardTitle className="text-2xl">Sign Up</CardTitle>
 					<CardDescription>
-						Enter your email below to login to your account
+						Create your account below to get started
 					</CardDescription>
 				</CardHeader>
 				<CardContent>
-					<LoginForm onSuccess={() => router.push("/")} />
+					<SignUpForm onSuccess={() => router.push("/login")} />
 					<div className="mt-4 text-center text-sm">
-						Don&apos;t have an account?{" "}
-						<Link href="/sign-up" className="underline">
-							Sign up
+						Already have an account?{" "}
+						<Link href="/login" className="underline">
+							Login
 						</Link>
 					</div>
 				</CardContent>
@@ -34,4 +34,4 @@ export const LoginPage = () => {
 	);
 };
 
-export default LoginPage;
+export default SignUpPage;
