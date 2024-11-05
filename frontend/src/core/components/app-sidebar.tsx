@@ -18,7 +18,7 @@ import {
 	SidebarMenu,
 	SidebarMenuButton,
 	SidebarMenuItem,
-} from "../../components/ui";
+} from "../../lib/ui/components";
 import { CreateTodoDialog } from "@/todos";
 
 // Menu items.

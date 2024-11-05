@@ -3,7 +3,7 @@ import { Table } from "@tanstack/react-table";
 
 import { priorities, statuses } from "../../todo";
 
-import { Button, Input } from "@/components/ui";
+import { Button, Input } from "@/lib/ui/components";
 import { DataTableViewOptions } from "./data-table-view-options";
 import { DataTableFacetedFilter } from "./data-table-faceted-filter";
 import DataTableCreateButton from "./data-table-create-button";

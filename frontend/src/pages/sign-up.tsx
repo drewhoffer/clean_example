@@ -5,7 +5,7 @@ import {
 	CardDescription,
 	CardHeader,
 	CardTitle,
-} from "@/components/ui";
+} from "@/lib/ui/components";
 import Link from "next/link";
 import { useRouter } from "next/router";
 

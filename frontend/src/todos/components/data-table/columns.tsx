@@ -6,7 +6,7 @@ import { labels, priorities, statuses } from "../../todo";
 import { DataTableColumnHeader } from "./data-table-column-header";
 import { DataTableRowActions } from "./data-table-row-actions";
 import { Todo } from "../../todo";
-import { Badge, Checkbox } from "@/components/ui";
+import { Badge, Checkbox } from "@/lib/ui/components";
 
 export const columns: ColumnDef<Todo>[] = [
 	{

@@ -16,7 +16,7 @@ import {
 	DropdownMenuSubContent,
 	DropdownMenuSubTrigger,
 	DropdownMenuTrigger,
-} from "@/components/ui";
+} from "@/lib/ui/components";
 import { EditTodoDialog } from "../edit-todo-dialog";
 import { useState } from "react";
 import DeleteTodoDialog from "../delete-todo-dialog";
