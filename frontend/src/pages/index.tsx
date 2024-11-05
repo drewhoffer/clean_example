@@ -1,5 +1,5 @@
 import { columns, DataTable, getAllTodos } from "@/todos";
-import { SidebarProvider, SidebarTrigger } from "@/lib/ui/components";
+import { SidebarProvider, SidebarTrigger } from "@/lib/ui";
 import { AppSidebar, UserNav } from "@/core";
 import { useQuery } from "@tanstack/react-query";
 

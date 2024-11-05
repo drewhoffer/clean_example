@@ -17,7 +17,6 @@ import {
 	DropdownMenuSubTrigger,
 	DropdownMenuTrigger,
 } from "@/lib/ui";
-import { EditTodoDialog } from "../edit-todo-dialog";
 import { useState } from "react";
 import DeleteTodoDialog from "../delete-todo-dialog";
 
@@ -25,12 +24,11 @@ interface DataTableRowActionsProps<TData> {
 	row: Row<TData>;
 }
 
-export function DataTableRowActions<TData>({
+export function DataTableBulkActionOptions<TData>({
 	row,
 }: DataTableRowActionsProps<TData>) {
 	const todo = todoSchema.parse(row.original);
 
-	const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
 	const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
 
 	return (
@@ -48,11 +46,6 @@ export function DataTableRowActions<TData>({
 				align="end"
 				className="w-[160px]"
 			>
-				<DropdownMenuItem
-					onClick={() => setIsEditDialogOpen(true)}
-				>
-					Edit
-				</DropdownMenuItem>
 				<DropdownMenuItem>Make a copy</DropdownMenuItem>
 				<DropdownMenuItem>Favorite</DropdownMenuItem>
 				<DropdownMenuSeparator />
@@ -79,12 +72,7 @@ export function DataTableRowActions<TData>({
 					<DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
 				</DropdownMenuItem>
 			</DropdownMenuContent>
-			<Dialog
-				open={isEditDialogOpen}
-				onOpenChange={setIsEditDialogOpen}
-			>
-				<EditTodoDialog todo={todo} />
-			</Dialog>
+
 			<Dialog
 				open={isDeleteDialogOpen}
 				onOpenChange={setIsDeleteDialogOpen}

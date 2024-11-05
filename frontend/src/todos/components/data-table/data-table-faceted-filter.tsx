@@ -17,7 +17,7 @@ import {
 	PopoverContent,
 	PopoverTrigger,
 	Separator,
-} from "@/lib/ui/components";
+} from "@/lib/ui";
 
 interface DataTableFacetedFilterProps<TData, TValue> {
 	column?: Column<TData, TValue>;

@@ -9,7 +9,7 @@ import {
 	DropdownMenuContent,
 	DropdownMenuLabel,
 	DropdownMenuSeparator,
-} from "@/lib/ui/components";
+} from "@/lib/ui";
 
 interface DataTableViewOptionsProps<TData> {
 	table: Table<TData>;

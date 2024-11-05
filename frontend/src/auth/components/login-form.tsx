@@ -12,7 +12,7 @@ import {
 	FormMessage,
 	Input,
 	Label,
-} from "@/lib/ui/components";
+} from "@/lib/ui";
 import Link from "next/link";
 import { login } from "../mutations";
 

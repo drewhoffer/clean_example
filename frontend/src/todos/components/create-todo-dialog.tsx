@@ -24,7 +24,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 	Textarea,
-} from "@/lib/ui/components";
+} from "@/lib/ui";
 import { CreateTodo, createTodoSchema } from "../validations";
 import { createTodo } from "../mutations";
 import { useRouter } from "next/router";

@@ -5,7 +5,7 @@ import {
 	DialogFooter,
 	DialogHeader,
 	DialogTitle,
-} from "@/lib/ui/components";
+} from "@/lib/ui";
 
 import { deleteTodo } from "../mutations";
 import { useRouter } from "next/router";

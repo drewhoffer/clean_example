@@ -11,7 +11,7 @@ import {
 	FormLabel,
 	FormMessage,
 	Input,
-} from "@/lib/ui/components";
+} from "@/lib/ui";
 import { login, signUp } from "../mutations";
 
 interface LoginFormProps {

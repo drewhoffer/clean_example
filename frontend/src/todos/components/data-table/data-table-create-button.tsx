@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogTrigger } from "@/lib/ui/components";
+import { Button, Dialog, DialogTrigger } from "@/lib/ui";
 
 import { CreateTodoDialog } from "../create-todo-dialog";
 import { PlusCircle } from "lucide-react";
