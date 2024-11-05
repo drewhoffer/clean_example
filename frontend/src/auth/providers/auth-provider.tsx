@@ -18,8 +18,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 				router.push("/login");
 			}
 		};
-
-		checkAuth();
+		if (router.pathname !== "/login") {
+			checkAuth();
+		}
 	}, [router]);
 
 	return (
