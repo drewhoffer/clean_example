@@ -22,6 +22,9 @@ export function DataTableBulkActionOptions<TData>({
 	table,
 }: DataTableRowActionsProps<TData>) {
 	const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+	console.log(table.getIsSomeRowsSelected());
+	const isARowSelected = table.getIsSomeRowsSelected() ||
+		table.getIsAllRowsSelected();
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
@@ -39,7 +42,7 @@ export function DataTableBulkActionOptions<TData>({
 			>
 				<DropdownMenuItem
 					onClick={() => setIsDeleteDialogOpen(true)}
-					disabled={!table.getIsSomeRowsSelected()}
+					disabled={!isARowSelected}
 				>
 					Delete
 					<DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
