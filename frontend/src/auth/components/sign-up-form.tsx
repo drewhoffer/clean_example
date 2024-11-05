@@ -24,7 +24,7 @@ export const SignUpForm = ({ onSuccess }: LoginFormProps) => {
 		defaultValues: {
 			email: "",
 			password: "",
-			passwordConfirmation: "",
+			password_confirmation: "",
 		},
 	});
 
@@ -91,7 +91,7 @@ export const SignUpForm = ({ onSuccess }: LoginFormProps) => {
 					<div className="grid gap-2">
 						<FormField
 							control={form.control}
-							name="passwordConfirmation"
+							name="password_confirmation"
 							render={({ field }) => (
 								<FormItem>
 									<FormLabel>Confirm Password</FormLabel>
