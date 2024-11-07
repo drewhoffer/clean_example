@@ -5,23 +5,42 @@ import { generateDaysForMonth } from "@/utils";
 export interface CalendarProviderProps {
 	children: React.ReactNode;
 }
+const initializeDays = (year: number, month: number): Day[] => {
+	return generateDaysForMonth(year, month);
+};
+
+const findToday = (days: Day[]): Day | undefined => {
+	return days.find((day) => day.isToday);
+};
 
 export const CalendarProvider = ({ children }: CalendarProviderProps) => {
 	const [days, setDays] = useState<Day[]>([]);
 	const [selectedDay, setSelectedDay] = useState<Day | undefined>(undefined);
+	const [currentMonth, setCurrentMonth] = useState<number>(
+		new Date().getMonth(),
+	);
+	const [currentYear, setCurrentYear] = useState<number>(
+		new Date().getFullYear(),
+	);
 
 	useEffect(() => {
-		const today = new Date();
-		const initialDays = generateDaysForMonth(
-			today.getFullYear(),
-			today.getMonth(),
-		);
+		const initialDays = initializeDays(currentYear, currentMonth);
 		setDays(initialDays);
-		setSelectedDay(initialDays.find((day) => day.isToday));
-	}, []);
+		setSelectedDay(findToday(initialDays));
+	}, [currentMonth, currentYear]);
 
 	return (
-		<CalendarContext.Provider value={{ days, selectedDay, setSelectedDay }}>
+		<CalendarContext.Provider
+			value={{
+				days,
+				selectedDay,
+				setSelectedDay,
+				currentMonth,
+				currentYear,
+				setCurrentMonth,
+				setCurrentYear,
+			}}
+		>
 			{children}
 		</CalendarContext.Provider>
 	);

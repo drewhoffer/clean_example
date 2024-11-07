@@ -20,6 +20,10 @@ export interface CalendarContextProps {
 	days: Day[];
 	selectedDay: Day | undefined;
 	setSelectedDay: (day: Day | undefined) => void;
+	currentMonth: number;
+	currentYear: number;
+	setCurrentMonth: (month: number) => void;
+	setCurrentYear: (year: number) => void;
 }
 
 export const CalendarContext = createContext<CalendarContextProps | undefined>(
