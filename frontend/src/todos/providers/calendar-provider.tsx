@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { CalendarContext, Day } from "../contexts";
 import { generateDaysForMonth } from "@/utils";
 
 export interface CalendarProviderProps {
-	children: React.ReactNode;
+	children: ReactNode;
 }
 const initializeDays = (year: number, month: number): Day[] => {
 	return generateDaysForMonth(year, month);

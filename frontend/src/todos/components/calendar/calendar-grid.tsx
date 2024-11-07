@@ -4,13 +4,20 @@ import { Day } from "@/todos/contexts";
 
 interface CalendarGridProps {
 	days: Day[];
+	onDateClick?: (day: string) => void;
 }
 
-export const CalendarGrid = ({ days }: CalendarGridProps) => {
+export const CalendarGrid = ({ days, onDateClick }: CalendarGridProps) => {
 	return (
 		<div className="flex bg-gray-200 text-xs/6 text-gray-700 lg:flex-auto">
 			<div className="hidden w-full lg:grid lg:grid-cols-7 lg:grid-rows-6 lg:gap-px">
-				{days.map((day) => <DayCell key={day.date} day={day} />)}
+				{days.map((day) => (
+					<DayCell
+						key={day.date}
+						day={day}
+						onDateClick={onDateClick}
+					/>
+				))}
 			</div>
 			<div className="isolate grid w-full grid-cols-7 grid-rows-6 gap-px lg:hidden">
 				{days.map((day) => (
@@ -43,11 +50,11 @@ export const CalendarGrid = ({ days }: CalendarGridProps) => {
 							{day?.date?.split("-")?.pop()?.replace(/^0/, "")}
 						</time>
 						<span className="sr-only">
-							{day.events.length} events
+							{day.todos?.length} todos
 						</span>
-						{day.events.length > 0 && (
+						{day.todos?.length > 0 && (
 							<span className="-mx-0.5 mt-auto flex flex-wrap-reverse">
-								{day.events.map((event) => (
+								{day.todos.map((event) => (
 									<span
 										key={event.id}
 										className="mx-0.5 mb-1 h-1.5 w-1.5 rounded-full bg-gray-400"

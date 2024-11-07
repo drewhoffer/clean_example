@@ -1,19 +1,12 @@
 import { createContext } from "react";
-
-export interface Event {
-	id: number;
-	name: string;
-	time: string;
-	datetime: string;
-	href: string;
-}
+import { Todo } from "../todo";
 
 export interface Day {
 	date: string;
 	isCurrentMonth?: boolean;
 	isToday?: boolean;
 	isSelected?: boolean;
-	events: Event[];
+	todos: Todo[];
 }
 
 export interface CalendarContextProps {

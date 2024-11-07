@@ -3,9 +3,10 @@ import { Day } from "@/todos/contexts";
 
 interface DayCellProps {
 	day: Day;
+	onDateClick?: (date: string) => void;
 }
 
-export const DayCell = ({ day }: DayCellProps) => {
+export const DayCell = ({ day, onDateClick }: DayCellProps) => {
 	return (
 		<div
 			key={day.date}
@@ -13,6 +14,7 @@ export const DayCell = ({ day }: DayCellProps) => {
 				day.isCurrentMonth ? "bg-white" : "bg-gray-50 text-gray-500",
 				"relative px-3 py-2 text-center",
 			)}
+			onClick={() => onDateClick?.(day.date)}
 		>
 			<time
 				dateTime={day.date}
@@ -22,26 +24,26 @@ export const DayCell = ({ day }: DayCellProps) => {
 			>
 				{day?.date?.split("-").pop()?.replace(/^0/, "") ?? ""}
 			</time>
-			{day.events.length > 0 && (
+			{day.todos?.length > 0 && (
 				<ol className="mt-2">
-					{day.events.slice(0, 2).map((event) => (
-						<li key={event.id}>
-							<a href={event.href} className="group flex">
+					{day.todos.slice(0, 2).map((todo) => (
+						<li key={todo.id}>
+							<a href={"#"} className="group flex">
 								<p className="flex-auto truncate font-medium text-gray-900 group-hover:text-indigo-600">
-									{event.name}
+									{todo.title}
 								</p>
 								<time
-									dateTime={event.datetime}
+									dateTime={todo.dueDate.toISOString()}
 									className="ml-3 hidden flex-none text-gray-500 group-hover:text-indigo-600 xl:block"
 								>
-									{event.time}
+									{todo.dueDate.toLocaleDateString()}
 								</time>
 							</a>
 						</li>
 					))}
-					{day.events.length > 2 && (
+					{day.todos.length > 2 && (
 						<li className="text-gray-500">
-							+ {day.events.length - 2} more
+							+ {day.todos.length - 2} more
 						</li>
 					)}
 				</ol>

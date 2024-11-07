@@ -2,8 +2,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import {
 	Button,
+	Calendar,
 	CardContent,
 	CardFooter,
+	Checkbox,
+	cn,
 	DialogContent,
 	DialogDescription,
 	DialogHeader,
@@ -16,26 +19,28 @@ import {
 	FormLabel,
 	FormMessage,
 	Input,
-	Select,
-	SelectContent,
-	SelectGroup,
-	SelectItem,
-	SelectLabel,
-	SelectTrigger,
-	SelectValue,
+	Popover,
+	PopoverContent,
+	PopoverTrigger,
 	Textarea,
 } from "@/lib/ui";
 import { CreateTodo, createTodoSchema } from "../validations";
 import { createTodo } from "../mutations";
 import { useRouter } from "next/router";
+import { format } from "date-fns";
+import { CalendarIcon } from "lucide-react";
 
-export const CreateTodoDialog = () => {
+interface CreateTodoDialogProps {
+	dueDate?: Date;
+}
+
+export const CreateTodoDialog = ({ dueDate }: CreateTodoDialogProps) => {
 	const form = useForm<CreateTodo>({
 		resolver: zodResolver(createTodoSchema),
 		defaultValues: {
 			title: "",
 			description: "",
-			label: "",
+			dueDate: dueDate,
 		},
 	});
 
@@ -43,6 +48,7 @@ export const CreateTodoDialog = () => {
 
 	async function onSubmit(values: CreateTodo) {
 		try {
+			console.log(values);
 			await createTodo({ ...values });
 			reload();
 		} catch (e) {
@@ -59,65 +65,27 @@ export const CreateTodoDialog = () => {
 			</DialogHeader>
 			<Form {...form}>
 				<form onSubmit={form.handleSubmit(onSubmit)}>
-					<CardContent>
+					<CardContent className="flex flex-col gap-2">
 						<FormField
 							control={form.control}
 							name="title"
 							render={({ field }) => (
 								<FormItem>
-									<FormLabel>Username</FormLabel>
+									<FormLabel>Title</FormLabel>
 									<FormControl>
 										<Input
-											placeholder="shadcn"
+											placeholder="Call my mom"
 											{...field}
 										/>
 									</FormControl>
 									<FormDescription>
-										This is your public display name.
+										What do you need to do?
 									</FormDescription>
 									<FormMessage />
 								</FormItem>
 							)}
 						/>
-						<FormField
-							control={form.control}
-							name="label"
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel>Label</FormLabel>
-									<FormControl>
-										<Select
-											onValueChange={field.onChange}
-											defaultValue={field.value}
-										>
-											<SelectTrigger className="w-[180px]">
-												<SelectValue placeholder="Label" />
-											</SelectTrigger>
-											<SelectContent>
-												<SelectGroup>
-													<SelectLabel>
-														Label
-													</SelectLabel>
-													<SelectItem value="bug">
-														Bug
-													</SelectItem>
-													<SelectItem value="feature">
-														Feature
-													</SelectItem>
-													<SelectItem value="documentation">
-														Documentation
-													</SelectItem>
-												</SelectGroup>
-											</SelectContent>
-										</Select>
-									</FormControl>
-									<FormDescription>
-										How important is this task?
-									</FormDescription>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
+
 						<FormField
 							control={form.control}
 							name="description"
@@ -126,12 +94,13 @@ export const CreateTodoDialog = () => {
 									<FormLabel>Description</FormLabel>
 									<FormControl>
 										<Textarea
-											placeholder="shadcn"
+											placeholder="You could write anything here..."
 											{...field}
 										/>
 									</FormControl>
 									<FormDescription>
-										This is your public display name.
+										Anything you want to say about this
+										thing?
 									</FormDescription>
 									<FormMessage />
 								</FormItem>
@@ -139,44 +108,61 @@ export const CreateTodoDialog = () => {
 						/>
 						<FormField
 							control={form.control}
-							name="status"
+							name="dueDate"
 							render={({ field }) => (
-								<FormItem>
-									<FormLabel>Importance</FormLabel>
-									<FormControl>
-										<Select
-											onValueChange={field.onChange}
-											defaultValue={field.value}
+								<FormItem className="flex flex-col">
+									<FormLabel>Due Date</FormLabel>
+									<Popover>
+										<PopoverTrigger asChild>
+											<FormControl>
+												<Button
+													variant={"outline"}
+													className={cn(
+														"w-[240px] pl-3 text-left font-normal",
+														!field.value &&
+															"text-muted-foreground",
+													)}
+												>
+													{field.value
+														? (
+															format(
+																field.value,
+																"PPP",
+															)
+														)
+														: (
+															<span>
+																Pick a date
+															</span>
+														)}
+													<CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+												</Button>
+											</FormControl>
+										</PopoverTrigger>
+										<PopoverContent
+											className="w-auto p-0"
+											align="start"
 										>
-											<SelectTrigger className="w-[180px]">
-												<SelectValue placeholder="Select an importance" />
-											</SelectTrigger>
-											<SelectContent>
-												<SelectGroup>
-													<SelectLabel>
-														Priority
-													</SelectLabel>
-													<SelectItem value="backlog">
-														Backlog
-													</SelectItem>
-													<SelectItem value="todo">
-														Todo
-													</SelectItem>
-													<SelectItem value="in progress">
-														In Progress
-													</SelectItem>
-													<SelectItem value="done">
-														Done
-													</SelectItem>
-													<SelectItem value="canceled">
-														Canceled
-													</SelectItem>
-												</SelectGroup>
-											</SelectContent>
-										</Select>
-									</FormControl>
+											<Calendar
+												mode="single"
+												selected={field.value}
+												onSelect={field.onChange}
+												disabled={(date) =>
+													date.getTime() <
+														new Date().setHours(
+															0,
+															0,
+															0,
+															0,
+														) ||
+													date >
+														new Date("2100-01-01")}
+												initialFocus
+											/>
+										</PopoverContent>
+									</Popover>
 									<FormDescription>
-										How important is this task?
+										You better finish it before this date...
 									</FormDescription>
 									<FormMessage />
 								</FormItem>
@@ -184,40 +170,25 @@ export const CreateTodoDialog = () => {
 						/>
 						<FormField
 							control={form.control}
-							name="priority"
+							name="completed"
 							render={({ field }) => (
-								<FormItem>
-									<FormLabel>Priority</FormLabel>
+								<FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4 shadow">
 									<FormControl>
-										<Select
-											onValueChange={field.onChange}
-											defaultValue={field.value}
-										>
-											<SelectTrigger className="w-[180px]">
-												<SelectValue placeholder="Priority" />
-											</SelectTrigger>
-											<SelectContent>
-												<SelectGroup>
-													<SelectLabel>
-														Importance
-													</SelectLabel>
-													<SelectItem value="low">
-														Low
-													</SelectItem>
-													<SelectItem value="medium">
-														Medium
-													</SelectItem>
-													<SelectItem value="high">
-														High
-													</SelectItem>
-												</SelectGroup>
-											</SelectContent>
-										</Select>
+										<Checkbox
+											checked={field.value}
+											onCheckedChange={field.onChange}
+										/>
 									</FormControl>
-									<FormDescription>
-										How important is this task?
-									</FormDescription>
-									<FormMessage />
+									<div className="space-y-1 leading-none">
+										<FormLabel>
+											Is already completed?
+										</FormLabel>
+										<FormDescription>
+											I don&apos;t know why you would
+											create a completed task, but here
+											you go.
+										</FormDescription>
+									</div>
 								</FormItem>
 							)}
 						/>
