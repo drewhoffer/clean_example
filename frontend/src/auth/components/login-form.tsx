@@ -15,6 +15,7 @@ import {
 } from "@/lib/ui";
 import Link from "next/link";
 import { login } from "../mutations";
+import { getGoogleOAuthURL } from "../utils/getGoogleOAuthUrl";
 
 interface LoginFormProps {
 	onSuccess?: () => unknown;
@@ -94,6 +95,17 @@ export const LoginForm = ({ onSuccess }: LoginFormProps) => {
 					</Button>
 				</div>
 			</form>
+			<div className="mt-2">
+				<a href={getGoogleOAuthURL()}>
+					<Button
+						data-onsuccess="onSignIn"
+						variant="outline"
+						className="w-full"
+					>
+						Continue with Google
+					</Button>
+				</a>
+			</div>
 		</Form>
 	);
 };

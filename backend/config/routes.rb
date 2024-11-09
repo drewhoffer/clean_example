@@ -15,6 +15,9 @@ Rails.application.routes.draw do
         resource :email_verification, only: [:show, :create]
         resource :password_reset,     only: [:new, :edit, :create, :update]
       end
+      get  "/auth/failure",            to: "sessions/omniauth#failure"
+      get  "/auth/:provider/callback", to: "sessions/omniauth#create"
+      post "/auth/:provider/callback", to: "sessions/omniauth#create"
     end
   end
 

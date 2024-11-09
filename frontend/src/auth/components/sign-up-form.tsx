@@ -13,6 +13,7 @@ import {
 	Input,
 } from "@/lib/ui";
 import { login, signUp } from "../mutations";
+import { getGoogleOAuthURL } from "../utils/getGoogleOAuthUrl";
 
 interface LoginFormProps {
 	onSuccess?: () => unknown;
@@ -37,6 +38,7 @@ export const SignUpForm = ({ onSuccess }: LoginFormProps) => {
 			console.error(error);
 		}
 	}
+
 	return (
 		<Form {...form}>
 			<form
@@ -111,6 +113,17 @@ export const SignUpForm = ({ onSuccess }: LoginFormProps) => {
 					</Button>
 				</div>
 			</form>
+			<div className="mt-2">
+				<a href={getGoogleOAuthURL()}>
+					<Button
+						data-onsuccess="onSignIn"
+						variant="outline"
+						className="w-full"
+					>
+						Continue with Google
+					</Button>
+				</a>
+			</div>
 		</Form>
 	);
 };
