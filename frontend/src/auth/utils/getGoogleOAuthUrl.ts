@@ -7,7 +7,8 @@ export function getGoogleOAuthURL() {
 		access_type: "offline",
 		response_type: "code",
 		prompt: "consent",
-		scope: process.env.NEXT_PUBLIC_GOOGLE_SCOPE as string,
+		scope:
+			`https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile ${process.env.NEXT_PUBLIC_GOOGLE_SCOPE}` as string,
 	};
 
 	const qs = new URLSearchParams(options);

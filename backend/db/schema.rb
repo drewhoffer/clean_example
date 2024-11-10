@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_09_230840) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_10_044006) do
   create_table "sessions", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "user_agent"
@@ -37,6 +37,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_09_230840) do
     t.datetime "updated_at", null: false
     t.string "provider"
     t.string "uid"
+    t.string "oauth_token"
+    t.string "refresh_token"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

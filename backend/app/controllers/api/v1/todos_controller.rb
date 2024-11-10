@@ -13,7 +13,6 @@ module Api::V1
 
       if params[:include_google_events] == 'true'
         google_events = fetch_google_calendar_events
-        puts google_events = "\n".repeat(50)
         @todos = @todos + google_events
       end
 
@@ -66,10 +65,10 @@ module Api::V1
 
       def fetch_google_calendar_events
         calendar = Google::Apis::CalendarV3::CalendarService.new
-        calendar.authorization = current_user.google_oauth_token # Ensure you have this token stored in your user session or database
+        calendar.authorization = Current.user.oauth_token # Ensure you have this token stored in your user session or database
 
         calendar_id = 'primary'
-        @result = calendar.list_events(calendar_id)
+        result = calendar.list_events(calendar_id)
         # calendar = Google::Apis::CalendarV3::CalendarService.new
         # calendar.authorization = credentials_for(Google::Apis::CalendarV3::AUTH_CALENDAR)
         # calendar_id = 'primary'
@@ -78,6 +77,7 @@ module Api::V1
         #                                 single_events: true,
         #                                 order_by: 'startTime',
         #                                 time_min: Time.now.iso8601)
+        result.items # This returns an array of events
       end
      def client_options
       def client_options
