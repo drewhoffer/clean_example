@@ -22,7 +22,7 @@ export function DataTableBulkActionOptions<TData>({
 	table,
 }: DataTableRowActionsProps<TData>) {
 	const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
-	console.log(table.getIsSomeRowsSelected());
+
 	const isARowSelected = table.getIsSomeRowsSelected() ||
 		table.getIsAllRowsSelected();
 	return (

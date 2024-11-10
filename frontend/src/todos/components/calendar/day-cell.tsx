@@ -33,10 +33,10 @@ export const DayCell = ({ day, onDateClick }: DayCellProps) => {
 									{todo.title}
 								</p>
 								<time
-									dateTime={todo.dueDate.toISOString()}
+									dateTime={todo.due_date.toISOString()}
 									className="ml-3 hidden flex-none text-gray-500 group-hover:text-indigo-600 xl:block"
 								>
-									{todo.dueDate.toLocaleDateString()}
+									{todo.due_date.toLocaleDateString()}
 								</time>
 							</a>
 						</li>

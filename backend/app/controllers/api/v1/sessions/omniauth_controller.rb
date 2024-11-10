@@ -6,9 +6,10 @@ module Api::V1
 
     def create
       @user = User.create_with(user_params).find_or_initialize_by(omniauth_params)
+      @user.update!(oauth_token: omniauth.credentials.token, refresh_token: omniauth.credentials.refresh_token)
+
       @user.save!
       @session = @user.sessions.create!
-      # cookies.signed.permanent[:session_token] = { value: session_record.id, httponly: true }
       cookies.signed.permanent[:session_token] = { value: @session.id, httponly: true }
       redirect_to "http://localhost:3001", allow_other_host: true
     end

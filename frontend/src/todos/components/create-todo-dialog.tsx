@@ -26,31 +26,30 @@ import {
 } from "@/lib/ui";
 import { CreateTodo, createTodoSchema } from "../validations";
 import { createTodo } from "../mutations";
-import { useRouter } from "next/router";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 
 interface CreateTodoDialogProps {
-	dueDate?: Date;
+	due_date?: Date;
+	onClose?: () => void;
+	onSuccess?: () => void;
 }
 
-export const CreateTodoDialog = ({ dueDate }: CreateTodoDialogProps) => {
+export const CreateTodoDialog = ({ due_date }: CreateTodoDialogProps) => {
+	console.log(due_date);
 	const form = useForm<CreateTodo>({
 		resolver: zodResolver(createTodoSchema),
 		defaultValues: {
 			title: "",
 			description: "",
-			dueDate: dueDate,
+			due_date: due_date,
+			completed: false,
 		},
 	});
 
-	const { reload } = useRouter();
-
 	async function onSubmit(values: CreateTodo) {
 		try {
-			console.log(values);
 			await createTodo({ ...values });
-			reload();
 		} catch (e) {
 			console.error(e);
 		}
@@ -108,7 +107,7 @@ export const CreateTodoDialog = ({ dueDate }: CreateTodoDialogProps) => {
 						/>
 						<FormField
 							control={form.control}
-							name="dueDate"
+							name="due_date"
 							render={({ field }) => (
 								<FormItem className="flex flex-col">
 									<FormLabel>Due Date</FormLabel>
@@ -147,16 +146,16 @@ export const CreateTodoDialog = ({ dueDate }: CreateTodoDialogProps) => {
 												mode="single"
 												selected={field.value}
 												onSelect={field.onChange}
-												disabled={(date) =>
-													date.getTime() <
-														new Date().setHours(
-															0,
-															0,
-															0,
-															0,
-														) ||
-													date >
-														new Date("2100-01-01")}
+												// disabled={(date) =>
+												// 	date.getTime() <
+												// 		new Date().setHours(
+												// 			0,
+												// 			0,
+												// 			0,
+												// 			0,
+												// 		) ||
+												// 	date >
+												// 		new Date("2100-01-01")}
 												initialFocus
 											/>
 										</PopoverContent>

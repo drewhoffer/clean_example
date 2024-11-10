@@ -1,13 +1,11 @@
-"use client";
-
 import { ColumnDef } from "@tanstack/react-table";
 
-import { labels, priorities, statuses } from "../../todo";
 import { DataTableColumnHeader } from "./data-table-column-header";
 import { DataTableRowActions } from "./data-table-row-actions";
 import { DataTableBulkActionOptions } from "./data-table-bulk-action-options";
 import { Todo } from "../../todo";
-import { Badge, Checkbox } from "@/lib/ui";
+import { Checkbox } from "@/lib/ui";
+import { CheckIcon, XIcon } from "lucide-react";
 
 export const columns: ColumnDef<Todo>[] = [
 	{
@@ -48,13 +46,8 @@ export const columns: ColumnDef<Todo>[] = [
 			<DataTableColumnHeader column={column} title="Title" />
 		),
 		cell: ({ row }) => {
-			const label = labels.find((label) =>
-				label.value === row.original.label
-			);
-
 			return (
 				<div className="flex space-x-2">
-					{label && <Badge variant="outline">{label.label}</Badge>}
 					<span className="max-w-[500px] truncate font-medium">
 						{row.getValue("title")}
 					</span>
@@ -62,26 +55,17 @@ export const columns: ColumnDef<Todo>[] = [
 			);
 		},
 	},
+
 	{
-		accessorKey: "status",
+		accessorKey: "due_date",
 		header: ({ column }) => (
-			<DataTableColumnHeader column={column} title="Status" />
+			<DataTableColumnHeader column={column} title="Due Date" />
 		),
 		cell: ({ row }) => {
-			const status = statuses.find(
-				(status) => status.value === row.getValue("status"),
-			);
-
-			if (!status) {
-				return null;
-			}
-
 			return (
-				<div className="flex w-[100px] items-center">
-					{status.icon && (
-						<status.icon className="mr-2 h-4 w-4 text-muted-foreground" />
-					)}
-					<span>{status.label}</span>
+				<div className="flex items-center">
+					{/* Show a time with different colours? */}
+					<span>{row.getValue("due_date")}</span>
 				</div>
 			);
 		},
@@ -90,28 +74,18 @@ export const columns: ColumnDef<Todo>[] = [
 		},
 	},
 	{
-		accessorKey: "priority",
+		accessorKey: "completed",
 		header: ({ column }) => (
-			<DataTableColumnHeader column={column} title="Priority" />
+			<DataTableColumnHeader column={column} title="Completed" />
 		),
-		cell: ({ row }) => {
-			const priority = priorities.find(
-				(priority) => priority.value === row.getValue("priority"),
-			);
+		cell: ({ row }) => (
+			<div className="flex items-center">
+				<span>
+					{row.getValue("completed") ? <CheckIcon /> : <XIcon />}
+				</span>
+			</div>
+		),
 
-			if (!priority) {
-				return null;
-			}
-
-			return (
-				<div className="flex items-center">
-					{priority.icon && (
-						<priority.icon className="mr-2 h-4 w-4 text-muted-foreground" />
-					)}
-					<span>{priority.label}</span>
-				</div>
-			);
-		},
 		filterFn: (row, id, value) => {
 			return value.includes(row.getValue(id));
 		},

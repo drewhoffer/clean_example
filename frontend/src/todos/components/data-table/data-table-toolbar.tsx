@@ -1,12 +1,11 @@
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { Table } from "@tanstack/react-table";
 
-import { priorities, statuses } from "../../todo";
-
 import { Button, Input } from "@/lib/ui";
 import { DataTableViewOptions } from "./data-table-view-options";
 import { DataTableFacetedFilter } from "./data-table-faceted-filter";
 import DataTableCreateButton from "./data-table-create-button";
+import { CheckIcon, XIcon } from "lucide-react";
 
 interface DataTableToolbarProps<TData> {
 	table: Table<TData>;
@@ -30,18 +29,28 @@ export function DataTableToolbar<TData>({
 						)}
 					className="h-8 w-[150px] lg:w-[250px]"
 				/>
-				{table.getColumn("status") && (
+				{
+					/* {table.getColumn("due_date") && (
 					<DataTableFacetedFilter
 						column={table.getColumn("status")}
 						title="Status"
 						options={statuses}
 					/>
-				)}
-				{table.getColumn("priority") && (
+				)} */
+				}
+				{table.getColumn("completed") && (
 					<DataTableFacetedFilter
-						column={table.getColumn("priority")}
-						title="Priority"
-						options={priorities}
+						column={table.getColumn("completed")}
+						title="Completed"
+						options={[{
+							label: "Not completed",
+							value: "false",
+							icon: XIcon,
+						}, {
+							label: "Completed",
+							value: "true",
+							icon: CheckIcon,
+						}]}
 					/>
 				)}
 				{isFiltered && (

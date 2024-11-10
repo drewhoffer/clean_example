@@ -1,20 +1,15 @@
 import { DotsHorizontalIcon } from "@radix-ui/react-icons";
 import { Row } from "@tanstack/react-table";
 
-import { labels, todoSchema } from "../../todo";
+import { todoSchema } from "../../todo";
 import {
 	Button,
 	Dialog,
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
-	DropdownMenuRadioGroup,
-	DropdownMenuRadioItem,
 	DropdownMenuSeparator,
 	DropdownMenuShortcut,
-	DropdownMenuSub,
-	DropdownMenuSubContent,
-	DropdownMenuSubTrigger,
 	DropdownMenuTrigger,
 } from "@/lib/ui";
 import { EditTodoDialog } from "../edit-todo-dialog";
@@ -56,21 +51,7 @@ export function DataTableRowActions<TData>({
 				<DropdownMenuItem>Make a copy</DropdownMenuItem>
 				<DropdownMenuItem>Favorite</DropdownMenuItem>
 				<DropdownMenuSeparator />
-				<DropdownMenuSub>
-					<DropdownMenuSubTrigger>Labels</DropdownMenuSubTrigger>
-					<DropdownMenuSubContent>
-						<DropdownMenuRadioGroup value={todo.label}>
-							{labels.map((label) => (
-								<DropdownMenuRadioItem
-									key={label.value}
-									value={label.value}
-								>
-									{label.label}
-								</DropdownMenuRadioItem>
-							))}
-						</DropdownMenuRadioGroup>
-					</DropdownMenuSubContent>
-				</DropdownMenuSub>
+
 				<DropdownMenuSeparator />
 				<DropdownMenuItem
 					onClick={() => setIsDeleteDialogOpen(true)}

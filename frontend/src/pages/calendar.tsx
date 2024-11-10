@@ -8,22 +8,39 @@ import {
 	DaysOfWeek,
 	useCalendar,
 } from "@/todos";
+import { parseISO } from "date-fns";
 import { ClockIcon } from "lucide-react";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 const CalendarContent = () => {
 	const { days, selectedDay } = useCalendar();
 
 	const [isDialogOpen, setIsDialogOpen] = useState(false);
-	const [selectedDate, setSelectedDate] = useState<string>("");
-	console.log(selectedDate);
+	const [selectedDate, setSelectedDate] = useState<Date | undefined>(
+		undefined,
+	);
+
+	const { reload } = useRouter();
+
 	const openDialog = (date: string) => {
-		setSelectedDate(date);
-		setIsDialogOpen(true);
+		try {
+			setSelectedDate(parseISO(date));
+			setIsDialogOpen(true);
+		} catch (error) {
+			console.error("Error parsing date:", error);
+		}
 	};
 
 	const closeDialog = () => {
+		setSelectedDate(undefined);
+
 		setIsDialogOpen(false);
+	};
+
+	const onSubmitSuccess = () => {
+		reload();
+		closeDialog();
 	};
 
 	return (
@@ -49,7 +66,7 @@ const CalendarContent = () => {
 												{todo.title}
 											</p>
 											<time
-												dateTime={todo.dueDate
+												dateTime={todo.due_date
 													.toISOString()}
 												className="mt-2 flex items-center text-gray-700"
 											>
@@ -57,7 +74,7 @@ const CalendarContent = () => {
 													className="mr-2 h-5 w-5 text-gray-400"
 													aria-hidden="true"
 												/>
-												{todo.dueDate
+												{todo.due_date
 													.toLocaleDateString()}
 											</time>
 										</div>
@@ -76,8 +93,15 @@ const CalendarContent = () => {
 					)}
 				</div>
 			</div>
+
 			<Dialog open={isDialogOpen} onOpenChange={closeDialog}>
-				<CreateTodoDialog />
+				{selectedDate && (
+					<CreateTodoDialog
+						due_date={selectedDate}
+						onClose={closeDialog}
+						onSuccess={onSubmitSuccess}
+					/>
+				)}
 			</Dialog>
 		</div>
 	);

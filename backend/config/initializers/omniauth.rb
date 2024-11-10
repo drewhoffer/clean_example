@@ -1,7 +1,7 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :google_oauth2, Rails.application.credentials.dig(:google, :client_id), Rails.application.credentials.dig(:google, :client_secret), {
     callback_path: '/api/v1/auth/google_oauth2/callback',
-    scope:"userinfo.profile,userinfo.email",
+    scope:"userinfo.profile,userinfo.email,calendar",
     provider_ignores_state: true
 
   }
