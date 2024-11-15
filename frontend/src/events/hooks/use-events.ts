@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { getAllEvents } from "../queries";
+import { eventSchema } from "../event";
 
 export interface UseEventsProps {
 	month: number;
@@ -13,11 +14,12 @@ export const useEvents = ({
 		queryKey: ["events", month, year],
 		queryFn: () => getAllEvents({ month, year }),
 	});
+	const events = data?.map((event) => eventSchema.parse(event));
 
 	return {
 		isLoading,
 		isError,
-		events: data,
+		events,
 	};
 };
 
