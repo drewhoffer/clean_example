@@ -14,7 +14,7 @@ export const todoSchema = z.object({
 
 export type Todo = z.infer<typeof todoSchema>;
 
-export type MakeTodoParams = Omit<Todo, "id"> & { id?: string };
+export type MakeTodoParams = Omit<Todo, "id"> & { id?: number };
 
 export function makeTodo({
 	id,

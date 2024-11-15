@@ -1,4 +1,4 @@
-import { http } from "@/lib";
+import { http } from "@/lib/http";
 import { SignUp } from "../validations";
 
 export const signUp = async (values: SignUp): Promise<unknown> =>

@@ -1,12 +1,12 @@
 import { createContext } from "react";
-import { Todo } from "../todo";
+import { Event } from "@/events";
 
 export interface Day {
 	date: string;
 	isCurrentMonth?: boolean;
 	isToday?: boolean;
 	isSelected?: boolean;
-	todos: Todo[]; // TODO: This will need to be generic once we add events
+	events: Event[]; // TODO: This will need to be generic once we add events
 }
 
 export interface CalendarContextProps {

@@ -1,6 +1,6 @@
-import { cn } from "@/lib";
+import { cn } from "@/lib/ui";
 import { DayCell } from "./day-cell";
-import { Day } from "@/todos/contexts";
+import { Day } from "@/lib/calendar/contexts";
 
 interface CalendarGridProps {
 	days: Day[];
@@ -50,11 +50,11 @@ export const CalendarGrid = ({ days, onDateClick }: CalendarGridProps) => {
 							{day?.date?.split("-")?.pop()?.replace(/^0/, "")}
 						</time>
 						<span className="sr-only">
-							{day.todos?.length} todos
+							{day.events?.length} events
 						</span>
-						{day.todos?.length > 0 && (
+						{day.events?.length > 0 && (
 							<span className="-mx-0.5 mt-auto flex flex-wrap-reverse">
-								{day.todos.map((event) => (
+								{day.events.map((event) => (
 									<span
 										key={event.id}
 										className="mx-0.5 mb-1 h-1.5 w-1.5 rounded-full bg-gray-400"

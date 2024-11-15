@@ -1,4 +1,4 @@
-import { http } from "@/lib";
+import { http } from "@/lib/http";
 import { makeTodo, Todo } from "../todo";
 import { CreateTodo } from "../validations";
 

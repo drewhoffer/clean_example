@@ -1,4 +1,4 @@
-import { http } from "@/lib";
+import { http } from "@/lib/http";
 import { Login } from "../validations";
 
 interface LoginResponse {

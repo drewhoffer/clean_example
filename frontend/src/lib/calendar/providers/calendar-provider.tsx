@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useState } from "react";
 import { CalendarContext, Day } from "../contexts";
-import { generateDaysForMonth } from "@/utils";
+import { generateDaysForMonth } from "../utils";
 
 export interface CalendarProviderProps {
 	children: ReactNode;

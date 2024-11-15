@@ -1,7 +1,7 @@
 import { Button } from "@/lib/ui";
-import { useCalendar } from "@/todos/hooks";
-import { monthNames } from "@/utils/months";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import { useCalendar } from "../../hooks";
+import { monthNames } from "../../utils";
 
 export const CalendarHeader = () => {
 	const { currentMonth, currentYear, setCurrentMonth, setCurrentYear } =

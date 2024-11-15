@@ -1,15 +1,14 @@
 import { AppSidebar } from "@/core";
 import { useEvents } from "@/events";
-import { Dialog, SidebarProvider, SidebarTrigger } from "@/lib/ui";
 import {
 	CalendarGrid,
 	CalendarHeader,
 	CalendarProvider,
-	CreateTodoDialog,
 	DaysOfWeek,
 	useCalendar,
-	useTodos,
-} from "@/todos";
+} from "@/lib/calendar";
+import { Dialog, SidebarProvider, SidebarTrigger } from "@/lib/ui";
+import { CreateTodoDialog, useTodos } from "@/todos";
 import { parseISO } from "date-fns";
 import { ClockIcon } from "lucide-react";
 import { useRouter } from "next/router";
