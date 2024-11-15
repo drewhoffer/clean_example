@@ -6,7 +6,7 @@ export interface Day {
 	isCurrentMonth?: boolean;
 	isToday?: boolean;
 	isSelected?: boolean;
-	todos: Todo[];
+	todos: Todo[]; // TODO: This will need to be generic once we add events
 }
 
 export interface CalendarContextProps {

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      get "events/index"
+      get "events", to: "events#index"
       resources :todos do
         collection do
           delete 'destroy_many'
