@@ -12,7 +12,7 @@ export const DayCell = ({ day, onDateClick }: DayCellProps) => {
 			key={day.date}
 			className={cn(
 				day.isCurrentMonth ? "bg-white" : "bg-gray-50 text-gray-500",
-				"relative px-3 py-2 text-center",
+				"relative px-1 py-2 text-center",
 			)}
 			onClick={() => onDateClick?.(day.date)}
 		>
@@ -27,16 +27,25 @@ export const DayCell = ({ day, onDateClick }: DayCellProps) => {
 			{day.events?.length > 0 && (
 				<ol className="mt-2">
 					{day.events.slice(0, 2).map((event) => (
-						<li key={event.id}>
-							<a href={"#"} className="group flex">
-								<p className="flex-auto truncate font-medium text-gray-900 group-hover:text-indigo-600">
+						<li
+							className="bg-emerald-500 py-0.5 px-1 rounded-lg text-xs"
+							key={event.id}
+						>
+							<a
+								href={"#"}
+								className="group flex justify-between"
+							>
+								<p className="ml-2 truncate font-medium text-foreground group-hover:text-white">
 									{event.title}
 								</p>
 								<time
 									dateTime={event.start_date.toISOString()}
-									className="ml-3 hidden flex-none text-gray-500 group-hover:text-indigo-600 xl:block"
+									className="ml-3 hidden flex-none text-foreground group-hover:text-white xl:block"
 								>
-									{event.start_date.toLocaleDateString()}
+									{event.start_date.toLocaleTimeString([], {
+										hour: "2-digit",
+										minute: "2-digit",
+									})}
 								</time>
 							</a>
 						</li>

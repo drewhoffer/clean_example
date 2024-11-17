@@ -22,7 +22,6 @@ export const CalendarProvider = ({ children }: CalendarProviderProps) => {
 	const [currentYear, setCurrentYear] = useState<number>(
 		new Date().getFullYear(),
 	);
-
 	useEffect(() => {
 		const initialDays = initializeDays(currentYear, currentMonth);
 		setDays(initialDays);

@@ -62,6 +62,20 @@ export const CalendarContent = () => {
 		return <div>Error...</div>;
 	}
 
+	// for now we just want to stick events onto the days
+	// we can do this better later
+	if (events) {
+		days.forEach((day) => {
+			const date = day.date;
+			const dayEvents = events.filter((event) => {
+				const eventDate = new Date(event.start_date).getDate();
+				const dayPart = date.split("-").pop();
+				return eventDate === (dayPart ? parseInt(dayPart) : NaN);
+			});
+			day.events = dayEvents;
+		});
+	}
+
 	return (
 		<div className="container">
 			<div className="hidden h-full flex-1 flex-col space-y-8 p-8 md:flex">
