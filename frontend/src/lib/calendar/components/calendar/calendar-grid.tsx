@@ -1,13 +1,30 @@
 import { cn } from "@/lib/ui";
 import { DayCell } from "./day-cell";
-import { Day } from "@/lib/calendar/contexts";
+import { CalendarItem } from "@/lib/calendar/contexts";
+import { useCalendar } from "../../hooks";
+import { isSameDay, parseISO } from "date-fns";
 
 interface CalendarGridProps {
-	days: Day[];
+	events?: CalendarItem[];
 	onDateClick?: (day: string) => void;
 }
 
-export const CalendarGrid = ({ days, onDateClick }: CalendarGridProps) => {
+export const CalendarGrid = ({ events, onDateClick }: CalendarGridProps) => {
+	const { days } = useCalendar();
+	// set the events for the given day based on the event passedIn
+
+	const mapEventsToDay = (events: CalendarItem[], day: string) => {
+		return events.filter((event) => {
+			const eventStartDate = event.start_date ? event.start_date : null;
+			const eventEndDate = event.end_date ? event.end_date : null;
+			const dayDate = parseISO(day);
+
+			return (
+				(eventStartDate && isSameDay(eventStartDate, dayDate)) ||
+				(eventEndDate && isSameDay(eventEndDate, dayDate))
+			);
+		});
+	};
 	return (
 		<div className="flex bg-gray-200 text-xs/6 text-gray-700 lg:flex-auto">
 			<div className="hidden w-full lg:grid lg:grid-cols-7 lg:grid-rows-6 lg:gap-px">
@@ -16,6 +33,7 @@ export const CalendarGrid = ({ days, onDateClick }: CalendarGridProps) => {
 						key={day.date}
 						day={day}
 						onDateClick={onDateClick}
+						events={events && mapEventsToDay(events, day.date)}
 					/>
 				))}
 			</div>
@@ -50,11 +68,11 @@ export const CalendarGrid = ({ days, onDateClick }: CalendarGridProps) => {
 							{day?.date?.split("-")?.pop()?.replace(/^0/, "")}
 						</time>
 						<span className="sr-only">
-							{day.events?.length} events
+							{events?.length} events
 						</span>
-						{day.events?.length > 0 && (
+						{events && events?.length > 0 && (
 							<span className="-mx-0.5 mt-auto flex flex-wrap-reverse">
-								{day.events.map((event) => (
+								{events.map((event) => (
 									<span
 										key={event.id}
 										className="mx-0.5 mb-1 h-1.5 w-1.5 rounded-full bg-gray-400"

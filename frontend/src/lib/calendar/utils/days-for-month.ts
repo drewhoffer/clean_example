@@ -1,4 +1,4 @@
-import { Day } from "@/todos";
+import { Day } from "../contexts";
 
 // Function to get the current date
 const getToday = (): Date => {
@@ -11,7 +11,6 @@ const createDay = (date: Date, isCurrentMonth: boolean, today: Date): Day => {
 		date: date.toISOString().split("T")[0], // Format the date as YYYY-MM-DD
 		isCurrentMonth, // Boolean indicating if the day is in the current month
 		isToday: date.toDateString() === today.toDateString(), // Boolean indicating if the day is today
-		events: [], // You can fetch or initialize events here
 	};
 };
 
