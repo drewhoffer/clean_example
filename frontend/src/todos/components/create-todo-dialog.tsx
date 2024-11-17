@@ -36,7 +36,6 @@ interface CreateTodoDialogProps {
 }
 
 export const CreateTodoDialog = ({ due_date }: CreateTodoDialogProps) => {
-	console.log(due_date);
 	const form = useForm<CreateTodo>({
 		resolver: zodResolver(createTodoSchema),
 		defaultValues: {

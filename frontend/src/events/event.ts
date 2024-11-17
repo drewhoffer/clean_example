@@ -5,9 +5,7 @@ export const eventSchema = z.object({
 	title: z.string(),
 	description: z.string().optional(),
 	start_date: z.preprocess((arg) => {
-		console.log(arg);
 		if (typeof arg === "string" || arg instanceof Date) {
-			console.log("making a date out of this thing");
 			return new Date(arg);
 		}
 	}, z.date()),
