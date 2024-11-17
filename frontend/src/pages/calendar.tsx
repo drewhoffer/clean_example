@@ -1,5 +1,13 @@
+import { parseISO } from "date-fns";
+import { useRouter } from "next/router";
+import { useState } from "react";
+
 import { AppSidebar } from "@/core";
-import { useEvents } from "@/events";
+import {
+	CalendarEventsList,
+	CalendarLoadingSkeleton,
+	useEvents,
+} from "@/events";
 import {
 	CalendarGrid,
 	CalendarHeader,
@@ -13,13 +21,9 @@ import {
 	SidebarTrigger,
 	useDisclosure,
 } from "@/lib/ui";
-import { CreateTodoDialog, useTodos } from "@/todos";
-import { format, parseISO } from "date-fns";
-import { ClockIcon } from "lucide-react";
-import { useRouter } from "next/router";
-import { useState } from "react";
+import { CreateTodoDialog } from "@/todos";
 
-const CalendarContent = () => {
+export const CalendarContent = () => {
 	const { days, currentMonth, currentYear } = useCalendar();
 
 	const { open, onOpen, onClose, onToggle } = useDisclosure();
@@ -27,12 +31,11 @@ const CalendarContent = () => {
 	const [selectedDate, setSelectedDate] = useState<Date | undefined>(
 		undefined,
 	);
-
-	const { isError: isTodosError } = useTodos();
-	const { events, isError: isEventsError } = useEvents({
-		month: currentMonth,
-		year: currentYear,
-	});
+	const { events, isError: isEventsError, isLoading: isEventsLoading } =
+		useEvents({
+			month: currentMonth,
+			year: currentYear,
+		});
 
 	const { reload } = useRouter();
 
@@ -55,7 +58,7 @@ const CalendarContent = () => {
 		handleCloseDialog();
 	};
 
-	if (isEventsError || isTodosError) {
+	if (isEventsError) {
 		return <div>Error...</div>;
 	}
 
@@ -72,67 +75,16 @@ const CalendarContent = () => {
 							onDateClick={handleDateClick}
 						/>
 					</div>
-
-					{events && events?.length > 0 && (
-						<div className="px-4 py-10 sm:px-6 lg:hidden">
-							<ol className="divide-y divide-gray-100 overflow-hidden rounded-lg bg-white text-sm shadow ring-1 ring-black ring-opacity-5">
-								{events.map((event) => (
-									<li
-										key={event.id}
-										className="group flex p-4 pr-6 focus-within:bg-gray-50 hover:bg-gray-50"
-									>
-										<div className="flex-auto">
-											<p className="font-semibold text-gray-900">
-												{event.title}
-											</p>
-											<time
-												dateTime={event.start_date
-													.toISOString()}
-												className="mt-2 flex items-center text-gray-700"
-											>
-												<ClockIcon
-													className="mr-2 h-5 w-5 text-gray-400"
-													aria-hidden="true"
-												/>
-												{format(
-													event.start_date,
-													"MMMM d, yyyy h:mm a",
-												)}
-												{event.end_date && (
-													<>
-														{" - "}
-														{format(
-															event.end_date,
-															"MMMM d, yyyy h:mm a",
-														)}
-													</>
-												)}
-											</time>
-										</div>
-										<a
-											href="#"
-											className="ml-6 flex-none self-center rounded-md bg-white px-3 py-2 font-semibold text-gray-900 opacity-0 shadow-sm ring-1 ring-inset ring-gray-300 hover:ring-gray-400 focus:opacity-100 group-hover:opacity-100"
-										>
-											Edit<span className="sr-only">
-												, {event.title}
-											</span>
-										</a>
-									</li>
-								))}
-							</ol>
-						</div>
-					)}
+					{isEventsLoading && <CalendarLoadingSkeleton />}
+					{events && <CalendarEventsList events={events} />}
 				</div>
 			</div>
-
 			<Dialog open={open} onOpenChange={onToggle}>
-				{selectedDate && (
-					<CreateTodoDialog
-						due_date={selectedDate}
-						onClose={onClose}
-						onSuccess={onSubmitSuccess}
-					/>
-				)}
+				<CreateTodoDialog
+					due_date={selectedDate}
+					onClose={onClose}
+					onSuccess={onSubmitSuccess}
+				/>
 			</Dialog>
 		</div>
 	);
