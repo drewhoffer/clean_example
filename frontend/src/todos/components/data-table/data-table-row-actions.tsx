@@ -1,7 +1,6 @@
 import { DotsHorizontalIcon } from "@radix-ui/react-icons";
 import { Row } from "@tanstack/react-table";
 
-import { todoSchema } from "../../todo";
 import {
 	Button,
 	Dialog,
@@ -11,9 +10,10 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuShortcut,
 	DropdownMenuTrigger,
+	useDisclosure,
 } from "@/lib/ui";
+import { todoSchema } from "../../todo";
 import { EditTodoDialog } from "../edit-todo-dialog";
-import { useState } from "react";
 import DeleteTodoDialog from "../delete-todo-dialog";
 
 interface DataTableRowActionsProps<TData> {
@@ -25,8 +25,16 @@ export function DataTableRowActions<TData>({
 }: DataTableRowActionsProps<TData>) {
 	const todo = todoSchema.parse(row.original);
 
-	const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
-	const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+	const {
+		open: isEditDialogOpen,
+		onOpen: onEditOpen,
+		onToggle: onEditToggle,
+	} = useDisclosure();
+	const {
+		open: isDeleteDialogOpen,
+		onOpen: onDeleteOpen,
+		onToggle: onDeleteToggle,
+	} = useDisclosure();
 
 	return (
 		<DropdownMenu>
@@ -44,7 +52,7 @@ export function DataTableRowActions<TData>({
 				className="w-[160px]"
 			>
 				<DropdownMenuItem
-					onClick={() => setIsEditDialogOpen(true)}
+					onClick={onEditOpen}
 				>
 					Edit
 				</DropdownMenuItem>
@@ -54,7 +62,7 @@ export function DataTableRowActions<TData>({
 
 				<DropdownMenuSeparator />
 				<DropdownMenuItem
-					onClick={() => setIsDeleteDialogOpen(true)}
+					onClick={onDeleteOpen}
 				>
 					Delete
 					<DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
@@ -62,13 +70,13 @@ export function DataTableRowActions<TData>({
 			</DropdownMenuContent>
 			<Dialog
 				open={isEditDialogOpen}
-				onOpenChange={setIsEditDialogOpen}
+				onOpenChange={onEditToggle}
 			>
 				<EditTodoDialog todo={todo} />
 			</Dialog>
 			<Dialog
 				open={isDeleteDialogOpen}
-				onOpenChange={setIsDeleteDialogOpen}
+				onOpenChange={onDeleteToggle}
 			>
 				<DeleteTodoDialog todo={todo} />
 			</Dialog>

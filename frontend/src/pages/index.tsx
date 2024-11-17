@@ -1,13 +1,9 @@
-import { columns, DataTable, getAllTodos } from "@/todos";
+import { columns, DataTable, useTodos } from "@/todos";
 import { SidebarProvider, SidebarTrigger } from "@/lib/ui";
 import { AppSidebar, UserNav } from "@/core";
-import { useQuery } from "@tanstack/react-query";
 
 export default function Home() {
-  const { data, isError, isLoading } = useQuery({
-    queryKey: ["todos"],
-    queryFn: getAllTodos,
-  });
+  const { todos, isError, isLoading } = useTodos();
 
   if (isError) {
     return <div>Error...</div>;
@@ -16,7 +12,7 @@ export default function Home() {
   if (isLoading) {
     return <div>Loading...</div>;
   }
-  if (data === undefined) {
+  if (todos === undefined) {
     return <div>No data...</div>;
   }
   return (
@@ -39,7 +35,7 @@ export default function Home() {
               <UserNav />
             </div>
           </div>
-          <DataTable columns={columns} data={data} />
+          <DataTable columns={columns} data={todos} />
         </div>
       </div>
     </SidebarProvider>

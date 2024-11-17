@@ -7,7 +7,12 @@ import {
 	DaysOfWeek,
 	useCalendar,
 } from "@/lib/calendar";
-import { Dialog, SidebarProvider, SidebarTrigger } from "@/lib/ui";
+import {
+	Dialog,
+	SidebarProvider,
+	SidebarTrigger,
+	useDisclosure,
+} from "@/lib/ui";
 import { CreateTodoDialog, useTodos } from "@/todos";
 import { format, parseISO } from "date-fns";
 import { ClockIcon } from "lucide-react";
@@ -17,35 +22,37 @@ import { useState } from "react";
 const CalendarContent = () => {
 	const { days, currentMonth, currentYear } = useCalendar();
 
-	const [isDialogOpen, setIsDialogOpen] = useState(false);
+	const { open, onOpen, onClose, onToggle } = useDisclosure();
+
 	const [selectedDate, setSelectedDate] = useState<Date | undefined>(
 		undefined,
 	);
 
-	const { isError: isTodosError, isLoading: isTodosLoading } = useTodos();
-	const { events, isError: isEventsError, isLoading: isEventsLoading } =
-		useEvents({ month: currentMonth, year: currentYear });
+	const { isError: isTodosError } = useTodos();
+	const { events, isError: isEventsError } = useEvents({
+		month: currentMonth,
+		year: currentYear,
+	});
 
 	const { reload } = useRouter();
 
-	const openDialog = (date: string) => {
+	const handleDateClick = (date: string) => {
 		try {
 			setSelectedDate(parseISO(date));
-			setIsDialogOpen(true);
+			onOpen();
 		} catch (error) {
 			console.error("Error parsing date:", error);
 		}
 	};
 
-	const closeDialog = () => {
+	const handleCloseDialog = () => {
 		setSelectedDate(undefined);
-
-		setIsDialogOpen(false);
+		onClose();
 	};
 
 	const onSubmitSuccess = () => {
 		reload();
-		closeDialog();
+		handleCloseDialog();
 	};
 
 	if (isEventsError || isTodosError) {
@@ -62,7 +69,7 @@ const CalendarContent = () => {
 						<DaysOfWeek />
 						<CalendarGrid
 							days={days}
-							onDateClick={openDialog}
+							onDateClick={handleDateClick}
 						/>
 					</div>
 
@@ -118,11 +125,11 @@ const CalendarContent = () => {
 				</div>
 			</div>
 
-			<Dialog open={isDialogOpen} onOpenChange={closeDialog}>
+			<Dialog open={open} onOpenChange={onToggle}>
 				{selectedDate && (
 					<CreateTodoDialog
 						due_date={selectedDate}
-						onClose={closeDialog}
+						onClose={onClose}
 						onSuccess={onSubmitSuccess}
 					/>
 				)}

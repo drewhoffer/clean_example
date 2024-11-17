@@ -9,8 +9,8 @@ import {
 	DropdownMenuItem,
 	DropdownMenuShortcut,
 	DropdownMenuTrigger,
+	useDisclosure,
 } from "@/lib/ui";
-import { useState } from "react";
 import { DeleteManyTodosDialog } from "../delete-many-todos-dialog";
 import { Todo } from "@/todos/todo";
 
@@ -21,7 +21,7 @@ interface DataTableRowActionsProps<TData> {
 export function DataTableBulkActionOptions<TData>({
 	table,
 }: DataTableRowActionsProps<TData>) {
-	const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+	const { onOpen, open, onToggle } = useDisclosure();
 
 	const isARowSelected = table.getIsSomeRowsSelected() ||
 		table.getIsAllRowsSelected();
@@ -41,7 +41,7 @@ export function DataTableBulkActionOptions<TData>({
 				className="w-[160px]"
 			>
 				<DropdownMenuItem
-					onClick={() => setIsDeleteDialogOpen(true)}
+					onClick={onOpen}
 					disabled={!isARowSelected}
 				>
 					Delete
@@ -50,8 +50,8 @@ export function DataTableBulkActionOptions<TData>({
 			</DropdownMenuContent>
 
 			<Dialog
-				open={isDeleteDialogOpen}
-				onOpenChange={setIsDeleteDialogOpen}
+				open={open}
+				onOpenChange={onToggle}
 			>
 				<DeleteManyTodosDialog
 					todos={table.getSelectedRowModel().rows.map((row) =>
