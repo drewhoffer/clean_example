@@ -11,6 +11,7 @@ import {
 import {
 	CalendarGrid,
 	CalendarHeader,
+	CalendarItem,
 	CalendarProvider,
 	DaysOfWeek,
 	useCalendar,
@@ -21,7 +22,7 @@ import {
 	SidebarTrigger,
 	useDisclosure,
 } from "@/lib/ui";
-import { CreateTodoDialog } from "@/todos";
+import { CreateTodoDialog, useTodos } from "@/todos";
 
 export const CalendarContent = () => {
 	const { currentMonth, currentYear } = useCalendar();
@@ -36,6 +37,8 @@ export const CalendarContent = () => {
 			month: currentMonth,
 			year: currentYear,
 		});
+	const { todos, isError: isTodosError, isLoading: isTodosLoading } =
+		useTodos();
 
 	const { reload } = useRouter();
 
@@ -58,9 +61,20 @@ export const CalendarContent = () => {
 		handleCloseDialog();
 	};
 
-	if (isEventsError) {
+	if (isEventsError || isTodosError) {
 		return <div>Error...</div>;
 	}
+
+	const calendarEvents: CalendarItem[] = events && todos
+		? [
+			...events,
+			...todos.map((todo) => ({
+				...todo,
+				id: todo.id.toString(),
+				end_date: todo.due_date,
+			})),
+		]
+		: [];
 
 	return (
 		<div className="container">
@@ -71,12 +85,16 @@ export const CalendarContent = () => {
 					<div className="shadow ring-1 ring-black ring-opacity-5 lg:flex lg:flex-auto lg:flex-col">
 						<DaysOfWeek />
 						<CalendarGrid
-							events={events}
+							events={calendarEvents}
 							onDateClick={handleDateClick}
 						/>
 					</div>
-					{isEventsLoading && <CalendarLoadingSkeleton />}
-					{events && <CalendarEventsList events={events} />}
+					{(isEventsLoading || isTodosLoading) && (
+						<CalendarLoadingSkeleton />
+					)}
+					{(events && todos) && <CalendarEventsList
+						events={events}
+					/>}
 				</div>
 			</div>
 			<Dialog open={open} onOpenChange={onToggle}>
