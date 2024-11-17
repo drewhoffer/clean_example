@@ -11,7 +11,6 @@ interface CalendarGridProps {
 
 export const CalendarGrid = ({ events, onDateClick }: CalendarGridProps) => {
 	const { days } = useCalendar();
-	// set the events for the given day based on the event passedIn
 
 	const mapEventsToDay = (events: CalendarItem[], day: string) => {
 		return events.filter((event) => {
