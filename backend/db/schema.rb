@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_10_044006) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_18_022405) do
   create_table "sessions", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "user_agent"
@@ -27,6 +27,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_10_044006) do
     t.datetime "updated_at", null: false
     t.boolean "completed", default: false, null: false
     t.date "due_date"
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_todos_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,4 +45,5 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_10_044006) do
   end
 
   add_foreign_key "sessions", "users"
+  add_foreign_key "todos", "users"
 end
