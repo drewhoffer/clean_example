@@ -33,6 +33,31 @@ class GoogleCalendarService
     end
   end
 
+  def create_event(event_params)
+    calendar = Google::Apis::CalendarV3::CalendarService.new
+    calendar.authorization = @user.oauth_token
+
+    event = Google::Apis::CalendarV3::Event.new(
+      summary: event_params[:title],
+      description: event_params[:description],
+      start: {
+        date_time: event_params[:start_date]
+      },
+      end: {
+        date_time: event_params[:end_date]
+      }
+    )
+
+    calendar.insert_event('primary', event)
+  rescue Google::Apis::AuthorizationError => e
+    Rails.logger.error("Google API authorization error: #{e.message}")
+    if refresh_google_token
+      retry
+    else
+      nil
+    end
+  end
+
   private
 
     def refresh_google_token

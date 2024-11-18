@@ -22,7 +22,8 @@ import {
 	SidebarTrigger,
 	useDisclosure,
 } from "@/lib/ui";
-import { CreateTodoDialog, useTodos } from "@/todos";
+import { useTodos } from "@/todos";
+import { CreateEventDialog } from "@/events/components";
 
 export const CalendarContent = () => {
 	const { currentMonth, currentYear } = useCalendar();
@@ -92,14 +93,16 @@ export const CalendarContent = () => {
 					{(isEventsLoading || isTodosLoading) && (
 						<CalendarLoadingSkeleton />
 					)}
-					{(events && todos) && <CalendarEventsList
-						events={events}
-					/>}
+					{(events && todos) && (
+						<CalendarEventsList
+							events={events}
+						/>
+					)}
 				</div>
 			</div>
 			<Dialog open={open} onOpenChange={onToggle}>
-				<CreateTodoDialog
-					due_date={selectedDate}
+				<CreateEventDialog
+					start_date={selectedDate}
 					onClose={onClose}
 					onSuccess={onSubmitSuccess}
 				/>
