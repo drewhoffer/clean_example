@@ -1,15 +1,6 @@
-import {
-	Calendar,
-	Home,
-	Inbox,
-	PlusCircle,
-	Search,
-	Settings,
-} from "lucide-react";
+import { Calendar, Home } from "lucide-react";
 
 import {
-	Dialog,
-	DialogTrigger,
 	Sidebar,
 	SidebarContent,
 	SidebarGroup,
@@ -19,34 +10,18 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 } from "../../lib/ui/components";
-import { CreateTodoDialog } from "@/todos";
 
 // Menu items.
 const items = [
 	{
-		title: "Home",
-		url: "#",
+		title: "Todos",
+		url: "/",
 		icon: Home,
 	},
 	{
-		title: "Inbox",
-		url: "#",
-		icon: Inbox,
-	},
-	{
 		title: "Calendar",
-		url: "calendar",
+		url: "calendar/month",
 		icon: Calendar,
-	},
-	{
-		title: "Search",
-		url: "#",
-		icon: Search,
-	},
-	{
-		title: "Settings",
-		url: "#",
-		icon: Settings,
 	},
 ];
 
@@ -58,7 +33,8 @@ export function AppSidebar() {
 					<SidebarGroupLabel>Todo Manager</SidebarGroupLabel>
 					<SidebarGroupContent>
 						<SidebarMenu>
-							<SidebarMenuItem>
+							{
+								/* <SidebarMenuItem>
 								<Dialog>
 									<DialogTrigger asChild>
 										<SidebarMenuButton
@@ -72,7 +48,8 @@ export function AppSidebar() {
 									</DialogTrigger>
 									<CreateTodoDialog />
 								</Dialog>
-							</SidebarMenuItem>
+							</SidebarMenuItem> */
+							}
 							{items.map((item) => (
 								<SidebarMenuItem key={item.title}>
 									<SidebarMenuButton asChild>
