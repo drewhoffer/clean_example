@@ -20,7 +20,7 @@ const items = [
 	},
 	{
 		title: "Calendar",
-		url: "calendar/month",
+		url: "calendar/week",
 		icon: Calendar,
 	},
 ];

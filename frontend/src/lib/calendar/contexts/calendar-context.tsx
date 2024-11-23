@@ -22,18 +22,21 @@ export interface Day {
 }
 
 export interface CalendarContextProps {
-	days: Day[];
-	selectedDay: Day | undefined;
-	setSelectedDay: (day: Day | undefined) => void;
+	currentDay: number;
 	currentMonth: number;
 	currentYear: number;
+	getNextWeek: () => { year: number; month: number; day: number };
+	getPreviousWeek: () => { year: number; month: number; day: number };
+	getNextMonth: () => { year: number; month: number; day: number };
+	getPreviousMonth: () => { year: number; month: number; day: number };
+	getWeekRange: () => { startOfWeek: Date; endOfWeek: Date };
+	selectedDay: number;
+	setSelectedDay: (day: number) => void;
 	setCurrentMonth: (month: number) => void;
 	setCurrentYear: (year: number) => void;
 }
 
-export const CalendarContext = createContext<
-	CalendarContextProps | undefined
->(
+export const CalendarContext = createContext<CalendarContextProps | undefined>(
 	undefined,
 );
 
