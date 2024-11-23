@@ -1,4 +1,4 @@
-import WeekView from "@/components/week-view";
+import { WeekView } from "@/components/week-view";
 import { AppSidebar } from "@/core";
 import { CalendarHeader, CalendarProvider, useCalendar } from "@/lib/calendar";
 import { SidebarProvider, SidebarTrigger } from "@/lib/ui";
