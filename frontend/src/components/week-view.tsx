@@ -1,5 +1,6 @@
 import { useCalendar } from "@/lib/calendar";
 import { useRouter } from "next/router";
+import { useEffect, useRef } from "react";
 
 interface Event {
 	id: string;
@@ -13,7 +14,7 @@ const events: Event[] = [
 		id: "1",
 		title: "Morning Jog",
 		start: new Date("2024-11-11T06:00:00"),
-		end: new Date("2024-11-11T07:00:00"),
+		end: new Date("2024-11-11T08:45:00"),
 	},
 	{
 		id: "2",
@@ -225,7 +226,19 @@ export const WeekView = () => {
 	const { getWeekRange, selectedDay } = useCalendar();
 	const router = useRouter();
 	const { startOfWeek } = getWeekRange();
+	const container = useRef(null);
+	const containerNav = useRef(null);
+	const containerOffset = useRef(null);
 
+	useEffect(() => {
+		// Set the container scroll position based on the current time.
+		const currentMinute = new Date().getHours() * 60;
+		container.current.scrollTop = ((container.current.scrollHeight -
+			containerNav.current.offsetHeight -
+			containerOffset.current.offsetHeight) *
+			currentMinute) /
+			1440;
+	}, []);
 	const daysOfWeek: Date[] = [];
 	for (let i = 0; i < 7; i++) {
 		const day = new Date(startOfWeek);
@@ -268,12 +281,18 @@ export const WeekView = () => {
 	return (
 		<div className="container">
 			<div className="hidden h-full flex-1 flex-col space-y-8 md:flex">
-				<div className="isolate flex flex-auto flex-col overflow-auto bg-white">
+				<div
+					ref={container}
+					className="isolate flex flex-auto flex-col overflow-auto bg-white"
+				>
 					<div
 						style={{ width: "165%" }}
 						className="flex max-w-full flex-none flex-col sm:max-w-none md:max-w-full"
 					>
-						<div className="sticky top-0 z-30 flex-none bg-white shadow ring-1 ring-black/5 sm:pr-8">
+						<div
+							ref={containerNav}
+							className="sticky top-0 z-30 flex-none bg-white shadow ring-1 ring-black/5 sm:pr-8"
+						>
 							<div className="grid grid-cols-7 text-sm/6 text-gray-500 sm:hidden">
 								{daysOfWeek.map((day, index) => (
 									<button
@@ -301,8 +320,11 @@ export const WeekView = () => {
 							<div className="-mr-px hidden grid-cols-7 divide-x divide-gray-100 border-r border-gray-100 text-sm/6 text-gray-500 sm:grid">
 								<div className="col-end-1 w-14" />
 								{daysOfWeek.map((day, index) => (
-									<div
+									<button
 										key={index}
+										onClick={() => {
+											handleDayClick(day);
+										}}
 										className="flex items-center justify-center py-3"
 									>
 										<span className="flex items-baseline">
@@ -320,7 +342,7 @@ export const WeekView = () => {
 												{day.getDate()}
 											</span>
 										</span>
-									</div>
+									</button>
 								))}
 							</div>
 						</div>
@@ -335,7 +357,10 @@ export const WeekView = () => {
 											"repeat(48, minmax(3.5rem, 1fr))",
 									}}
 								>
-									<div className="row-end-1 h-7" />
+									<div
+										ref={containerOffset}
+										className="row-end-1 h-7"
+									/>
 									{Array.from({ length: 48 }).map((
 										_,
 										index,
