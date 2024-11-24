@@ -1,6 +1,6 @@
+import { useEvents } from "@/events";
 import { useCalendar } from "@/lib/calendar";
 import { useRouter } from "next/router";
-import { useEffect, useRef } from "react";
 
 interface Event {
 	id: string;
@@ -9,7 +9,7 @@ interface Event {
 	end: Date;
 }
 
-const events: Event[] = [
+const fakeEvents: Event[] = [
 	{
 		id: "1",
 		title: "Morning Jog",
@@ -223,22 +223,17 @@ const events: Event[] = [
 ];
 
 export const WeekView = () => {
-	const { getWeekRange, selectedDay } = useCalendar();
+	const { getWeekRange, selectedDay, currentMonth, currentYear } =
+		useCalendar();
 	const router = useRouter();
-	const { startOfWeek } = getWeekRange();
-	const container = useRef(null);
-	const containerNav = useRef(null);
-	const containerOffset = useRef(null);
+	console.log(currentMonth);
+	const { events, isLoading, isError } = useEvents({
+		month: currentMonth,
+		year: currentYear,
+	});
 
-	useEffect(() => {
-		// Set the container scroll position based on the current time.
-		const currentMinute = new Date().getHours() * 60;
-		container.current.scrollTop = ((container.current.scrollHeight -
-			containerNav.current.offsetHeight -
-			containerOffset.current.offsetHeight) *
-			currentMinute) /
-			1440;
-	}, []);
+	const { startOfWeek } = getWeekRange();
+
 	const daysOfWeek: Date[] = [];
 	for (let i = 0; i < 7; i++) {
 		const day = new Date(startOfWeek);
@@ -278,21 +273,24 @@ export const WeekView = () => {
 		return { startRow, span };
 	};
 
+	if (isLoading) {
+		return <div>Loading...</div>;
+	}
+
+	if (isError) {
+		return <div>Error loading events</div>;
+	}
+	console.log(events);
+
 	return (
 		<div className="container">
 			<div className="hidden h-full flex-1 flex-col space-y-8 md:flex">
-				<div
-					ref={container}
-					className="isolate flex flex-auto flex-col overflow-auto bg-white"
-				>
+				<div className="isolate flex flex-auto flex-col overflow-auto bg-white">
 					<div
 						style={{ width: "165%" }}
 						className="flex max-w-full flex-none flex-col sm:max-w-none md:max-w-full"
 					>
-						<div
-							ref={containerNav}
-							className="sticky top-0 z-30 flex-none bg-white shadow ring-1 ring-black/5 sm:pr-8"
-						>
+						<div className="sticky top-0 z-30 flex-none bg-white shadow ring-1 ring-black/5 sm:pr-8">
 							<div className="grid grid-cols-7 text-sm/6 text-gray-500 sm:hidden">
 								{daysOfWeek.map((day, index) => (
 									<button
@@ -357,10 +355,7 @@ export const WeekView = () => {
 											"repeat(48, minmax(3.5rem, 1fr))",
 									}}
 								>
-									<div
-										ref={containerOffset}
-										className="row-end-1 h-7"
-									/>
+									<div className="row-end-1 h-7" />
 									{Array.from({ length: 48 }).map((
 										_,
 										index,
@@ -404,7 +399,7 @@ export const WeekView = () => {
 											"1.75rem repeat(288, minmax(0, 1fr)) auto",
 									}}
 								>
-									{events.map((event) => {
+									{fakeEvents.map((event) => {
 										const eventDayIndex = daysOfWeek
 											.findIndex(
 												(day) =>
@@ -447,6 +442,70 @@ export const WeekView = () => {
 																.toISOString()}
 														>
 															{event.start
+																.toLocaleTimeString(
+																	[],
+																	{
+																		hour:
+																			"2-digit",
+																		minute:
+																			"2-digit",
+																	},
+																)}
+														</time>
+													</p>
+												</a>
+											</li>
+										);
+									})}
+
+									{events?.map((event) => {
+										const eventDayIndex = daysOfWeek
+											.findIndex(
+												(day) =>
+													day.getFullYear() ===
+														event.start_date
+															.getFullYear() &&
+													day.getMonth() ===
+														event.start_date
+															.getMonth() &&
+													day.getDate() ===
+														event.start_date
+															.getDate(),
+											);
+										if (eventDayIndex === -1) return null;
+
+										const { startRow, span } =
+											calculateEventPosition({
+												...event,
+												start: event.start_date,
+												end: event.end_date,
+											});
+
+										return (
+											<li
+												key={event.id}
+												className={`relative mt-px flex sm:col-start-${
+													eventDayIndex + 1
+												}`}
+												style={{
+													gridRow:
+														`${startRow} / span ${span}`,
+												}}
+											>
+												<a
+													href="#"
+													className="group absolute inset-1 flex flex-col overflow-y-auto rounded-lg bg-blue-50 p-2 text-xs/5 hover:bg-blue-100"
+												>
+													<p className="order-1 font-semibold text-blue-700">
+														{event.title}
+													</p>
+													<p className="text-blue-500 group-hover:text-blue-700">
+														<time
+															dateTime={event
+																.start_date
+																.toISOString()}
+														>
+															{event.start_date
 																.toLocaleTimeString(
 																	[],
 																	{

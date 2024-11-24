@@ -10,7 +10,7 @@ export const getAllEvents = async (
 ): Promise<Event[]> =>
 	await http.get<Event[]>("/events", {
 		params: {
-			month: month + 1, //because the months are 0 indexed TODO: Clean this up its mad yucky
+			month: month, //because the months are 0 indexed TODO: Clean this up its mad yucky
 			year,
 		},
 	});
