@@ -226,7 +226,6 @@ export const WeekView = () => {
 	const { getWeekRange, selectedDay, currentMonth, currentYear } =
 		useCalendar();
 	const router = useRouter();
-	console.log(currentMonth);
 	const { events, isLoading, isError } = useEvents({
 		month: currentMonth,
 		year: currentYear,
