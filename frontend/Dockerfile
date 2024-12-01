@@ -1,13 +1,37 @@
-FROM denoland/deno:alpine-2.1.1
-
+FROM denoland/deno:alpine-2.1.1 AS deps
 WORKDIR /app
 
+COPY package.json yarn.lock ./
+COPY deno.json deno.lock ./
+RUN yarn install
+
+FROM denoland/deno:alpine-2.1.1 AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-RUN deno task build
+ENV NEXT_TELEMETRY_DISABLED 1
 
-USER deno
+RUN yarn run build
+
+FROM denoland/deno:alpine-2.1.1 AS runner
+WORKDIR /app
+
+ENV NODE_ENV production
+ENV NEXT_TELEMETRY_DISABLED 1
+
+RUN getent group deno || addgroup --system --gid 1001 deno
+RUN getent passwd nextjs || adduser --system --uid 1001 nextjs
+
+COPY --from=builder --chown=nextjs:deno /app/.next ./.next
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/deno.json ./deno.json
+COPY --from=builder /app/package.json ./package.json
+
+USER nextjs
 
 EXPOSE 3001
 
-CMD ["task", "dev"]
+ENV PORT 3001
+
+CMD ["deno", "run", "start"]

@@ -145,16 +145,7 @@ export const CreateTodoDialog = ({ due_date }: CreateTodoDialogProps) => {
 												mode="single"
 												selected={field.value}
 												onSelect={field.onChange}
-												// disabled={(date) =>
-												// 	date.getTime() <
-												// 		new Date().setHours(
-												// 			0,
-												// 			0,
-												// 			0,
-												// 			0,
-												// 		) ||
-												// 	date >
-												// 		new Date("2100-01-01")}
+											
 												initialFocus
 											/>
 										</PopoverContent>
@@ -187,6 +178,23 @@ export const CreateTodoDialog = ({ due_date }: CreateTodoDialogProps) => {
 											you go.
 										</FormDescription>
 									</div>
+								</FormItem>
+							)}
+						/>
+						<FormField
+							control={form.control}
+							name="estimated_duration"
+							render={({ field }) => (
+								<FormItem>
+									<FormLabel>Estimated Duration</FormLabel>
+									<FormControl>
+										<Input
+											type="number"
+											placeholder="How many minutes to complete?"
+											{...field}
+										/>
+									</FormControl>
+									<FormMessage />
 								</FormItem>
 							)}
 						/>

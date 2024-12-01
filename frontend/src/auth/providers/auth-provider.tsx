@@ -1,30 +1,35 @@
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import { AuthContext } from "../contexts";
-import { getSessions } from "../queries";
+import { Login, SignUp } from "../validations";
+import { login as loginMutation, signUp as signUpMutation } from "../mutations";
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-	const router = useRouter();
-	const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const login = async (values: Login) => {
+    try {
+      return await loginMutation(values);
+    } catch {
+      throw new Error("Invalid credentials");
+    }
+  };
 
-	useEffect(() => {
-		const checkAuth = async () => {
-			try {
-				await getSessions();
-				setIsAuthenticated(true);
-			} catch {
-				setIsAuthenticated(false);
-				router.push("/login");
-			}
-		};
-		if (router.pathname !== "/login" && router.pathname !== "/sign-up") {
-			checkAuth();
-		}
-	}, [router]);
+  const signup = async (values: SignUp) => {
+    try {
+      return await signUpMutation(values);
+    } catch {
+      throw new Error("Something went wrong. Please try again.");
+    }
+  };
 
-	return (
-		<AuthContext.Provider value={{ isAuthenticated }}>
-			{children}
-		</AuthContext.Provider>
-	);
+  const getSessions = async () => {
+    try {
+      return await getSessions();
+    } catch {
+      throw new Error("Something went wrong. Please try again.");
+    }
+  };
+
+  return (
+    <AuthContext.Provider value={{ login, signup, getSessions }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };

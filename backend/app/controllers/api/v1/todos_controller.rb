@@ -44,7 +44,7 @@ module Api::V1
 
       # Only allow a list of trusted parameters through.
       def todo_params
-        params.require(:todo).permit(:title, :description,:due_date, :completed)
+        params.require(:todo).permit(:title, :description,:due_date, :completed, :estimated_duration)
       end
 
       def destroy_many_params

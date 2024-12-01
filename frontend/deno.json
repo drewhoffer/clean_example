@@ -4,8 +4,11 @@
     "build": "next build",
     "start": "next start -p 3001"
   },
+  "unstable": ["unsafe-proto"], //This may not be needed in a few weeks check after first week of december
   "imports": {
-    "@/*": "./src/*",
+    "@/lib/calendar": "./src/lib/calendar/index.ts",
+    "@/lib/ui": "./src/lib/ui/index.ts",
+    "@/lib/http": "./src/lib/http/index.ts",
     "@hookform/resolvers": "npm:@hookform/resolvers@^3.9.1",
     "@radix-ui/react-avatar": "npm:@radix-ui/react-avatar@^1.1.1",
     "@radix-ui/react-checkbox": "npm:@radix-ui/react-checkbox@^1.1.2",

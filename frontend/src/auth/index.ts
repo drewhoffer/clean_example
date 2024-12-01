@@ -3,4 +3,5 @@ export * from "./contexts";
 export * from "./hooks";
 export * from "./mutations";
 export * from "./providers";
+export * from "./queries"
 export * from "./validations";

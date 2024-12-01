@@ -7,8 +7,15 @@ export const createTodoSchema = z.object({
 		if (typeof arg === "string" || arg instanceof Date) {
 			return new Date(arg);
 		}
-	}, z.date()),
+	}, z.date().optional()),
 	completed: z.boolean(),
+	// This will be a number input so we will need to ensure its converted to a number
+	estimated_duration: z.preprocess((arg) => {
+		if (typeof arg === "string") {
+			return parseFloat(arg);
+		}
+		return arg;
+	}, z.number().optional())
 });
 
 export type CreateTodo = z.infer<typeof createTodoSchema>;

@@ -1,6 +1,8 @@
 import { columns, DataTable, useTodos } from "@/todos";
 import { SidebarProvider, SidebarTrigger } from "@/lib/ui";
 import { AppSidebar, UserNav } from "@/core";
+import { getSessions } from "@/auth";
+import { GetServerSideProps } from "next";
 
 export default function Home() {
   const { todos, isError, isLoading } = useTodos();
@@ -41,3 +43,19 @@ export default function Home() {
     </SidebarProvider>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  try {
+      await getSessions();
+      return {
+          props: {}, // Pass any props to the page component if needed
+      };
+  } catch {
+      return {
+          redirect: {
+              destination: "/login",
+              permanent: false,
+          },
+      };
+  }
+};
