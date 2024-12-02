@@ -1,11 +1,14 @@
 import { columns, DataTable, useTodos } from "@/todos";
 import { SidebarProvider, SidebarTrigger } from "@/lib/ui";
 import { AppSidebar, UserNav } from "@/core";
-import { getSessions } from "@/auth";
-import { GetServerSideProps } from "next";
+import { redirect } from "@/auth";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import axios from "axios";
 
-export default function Home() {
-  const { todos, isError, isLoading } = useTodos();
+export default function Home({
+  todos: initialTodos,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  const { todos, isError, isLoading } = useTodos({ initialTodos });
 
   if (isError) {
     return <div>Error...</div>;
@@ -44,18 +47,22 @@ export default function Home() {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
   try {
-      await getSessions();
-      return {
-          props: {}, // Pass any props to the page component if needed
-      };
-  } catch {
-      return {
-          redirect: {
-              destination: "/login",
-              permanent: false,
-          },
-      };
+    await axios.get("http://localhost:3000/api/v1/sessions", {
+      headers: { cookie: ctx.req.headers.cookie },
+    });
+    const { data: todosData } = await axios.get(
+      "http://localhost:3000/api/v1/todos",
+      {
+        headers: { cookie: ctx.req.headers.cookie },
+      }
+    );
+    return {
+      props: { todos: todosData }, // Pass any props to the page component if needed
+    };
+  } catch (e) {
+    console.log(e);
+    return redirect("/login");
   }
 };

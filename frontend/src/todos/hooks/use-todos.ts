@@ -1,17 +1,23 @@
 import { useQuery } from "@tanstack/react-query";
 import { getAllTodos } from "../queries";
+import { Todo } from "../todo";
 
-export const useTodos = () => {
-	const { isLoading, isError, data } = useQuery({
-		queryKey: ["todos"],
-		queryFn: getAllTodos,
-	});
+interface UseTodoProps {
+  initialTodos?: Todo[];
+}
 
-	return {
-		isLoading,
-		isError,
-		todos: data,
-	};
+export const useTodos = ({ initialTodos }: UseTodoProps = {}) => {
+  const { isLoading, isError, data } = useQuery({
+    queryKey: ["todos"],
+    queryFn: getAllTodos,
+    initialData: initialTodos,
+  });
+
+  return {
+    isLoading,
+    isError,
+    todos: data,
+  };
 };
 
 export default useTodos;
